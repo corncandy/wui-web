@@ -69,7 +69,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	'use strict';
 	
 	var create = function create(options) {
-	  console.log(options);
+	  var $el = options.$el;
+	
+	  $el.html('Profile List');
 	};
 	
 	module.exports = {
