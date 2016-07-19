@@ -3,7 +3,7 @@
   "description": "WUI components for Web Site",
   "author": "Cloud Mu",
   "user": "corncandy",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "scripts": {
     "start": "webpack-dev-server",
     "test": "karma start",
