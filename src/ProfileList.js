@@ -1,7 +1,9 @@
 'use strict';
 
 var create = function(options) {
-  console.log(options);
+  var $el = options.$el;
+
+  $el.html('Profile List');
 };
 
 module.exports = {
