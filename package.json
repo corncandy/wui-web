@@ -96,11 +96,5 @@
   ],
   "dependencies": {
     "handlebars": "^3.0.3"
-  },
-  "eslintConfig": {
-    "extends": "eslint:recommended",
-    "globals": {
-      "Handlebars": true
-    }
   }
 }

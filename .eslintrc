@@ -10,7 +10,8 @@
     "react"
   ],
   "globals": {
-    "jest": false
+    "jest": false,
+    "Handlebars": false
   },
   "rules": {
     "no-underscore-dangle": 0,
