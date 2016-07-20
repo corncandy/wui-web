@@ -2,7 +2,7 @@
 
 require('../templates/templates.js');
 
-var ProfileList = require('./ProfileList');
+var ProfileList = require('./profile-list');
 
 module.exports = {
   ProfileList: ProfileList,

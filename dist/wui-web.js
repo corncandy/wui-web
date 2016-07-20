@@ -71,8 +71,17 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	(function() {
 	  var template = Handlebars.template, templates = Handlebars.templates = Handlebars.templates || {};
-	templates['profile-list'] = template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
-	    return "<li><img src=\"../images/sample/sample-page-avatar1.png\" /></li>\n<li><img src=\"../images/sample/sample-page-avatar2.png\" /></li>\n<li><img src=\"../images/sample/sample-page-avatar3.png\" /></li>\n<li><img src=\"../images/sample/sample-page-avatar4.png\" /></li>\n<li><img src=\"../images/sample/sample-page-avatar5.png\" /></li>\n<img class=\"avatar-active\" src=\"../images/sample/sample-page-avatar-active.png\" />\n";
+	templates['profile-list'] = template({"1":function(depth0,helpers,partials,data) {
+	    var helper;
+	
+	  return "<li>\n  <img src=\""
+	    + this.escapeExpression(((helper = (helper = helpers.avatarUrl || (depth0 != null ? depth0.avatarUrl : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0,{"name":"avatarUrl","hash":{},"data":data}) : helper)))
+	    + "\" />\n</li>\n";
+	},"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
+	    var stack1;
+	
+	  return ((stack1 = helpers.each.call(depth0,(depth0 != null ? depth0.list : depth0),{"name":"each","hash":{},"fn":this.program(1, data, 0),"inverse":this.noop,"data":data})) != null ? stack1 : "")
+	    + "<img class=\"avatar-active\" src=\"../images/sample/sample-page-avatar-active.png\" />\n";
 	},"useData":true});
 	})();
 
@@ -85,7 +94,19 @@ return /******/ (function(modules) { // webpackBootstrap
 	var create = function create(options) {
 	  var $el = options.$el;
 	
-	  $el.html(Handlebars.templates['profile-list']());
+	  $el.html(Handlebars.templates['profile-list']({
+	    list: [{
+	      avatarUrl: '../images/sample/sample-page-avatar1.png'
+	    }, {
+	      avatarUrl: '../images/sample/sample-page-avatar2.png'
+	    }, {
+	      avatarUrl: '../images/sample/sample-page-avatar3.png'
+	    }, {
+	      avatarUrl: '../images/sample/sample-page-avatar4.png'
+	    }, {
+	      avatarUrl: '../images/sample/sample-page-avatar5.png'
+	    }]
+	  }));
 	};
 	
 	module.exports = {

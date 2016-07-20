@@ -5,6 +5,7 @@
   "user": "corncandy",
   "version": "0.1.4",
   "scripts": {
+    "styles": "cat ./styles/*.css > ./dist/wui-web.min.css",
     "hbs": "handlebars ./templates/*.hbs -f ./templates/templates.js -e hbs",
     "start": "webpack-dev-server",
     "test": "karma start",
@@ -13,7 +14,7 @@
     "gh-pages": "webpack",
     "gh-pages:deploy": "gh-pages -d gh-pages",
     "gh-pages:stats": "webpack --profile --json > stats.json",
-    "dist": "npm run hbs && webpack",
+    "dist": "npm run styles && npm run hbs && webpack",
     "dist:min": "webpack",
     "dist:modules": "rimraf ./dist-modules && babel ./src --out-dir ./dist-modules",
     "pretest": "npm run test:lint",
