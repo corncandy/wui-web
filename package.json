@@ -3,7 +3,7 @@
   "description": "WUI components for Web Site",
   "author": "Cloud Mu",
   "user": "corncandy",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "scripts": {
     "styles": "cat ./styles/*.css > ./dist/wui-web.min.css",
     "hbs": "handlebars ./templates/*.hbs -f ./templates/templates.js -e hbs",
