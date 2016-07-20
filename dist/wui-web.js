@@ -69,17 +69,11 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 1 */
 /***/ function(module, exports) {
 
-	"use strict";
-	
-	(function () {
-	    var template = Handlebars.template,
-	        templates = Handlebars.templates = Handlebars.templates || {};
-	    templates['profile-list'] = template({ "compiler": [6, ">= 2.0.0-beta.1"], "main": function main(depth0, helpers, partials, data) {
-	            return "<div>Profile List</div>\n";
-	        }, "useData": true });
-	    templates['sample-template'] = template({ "compiler": [6, ">= 2.0.0-beta.1"], "main": function main(depth0, helpers, partials, data) {
-	            return "<div>Sample Template</div>\n";
-	        }, "useData": true });
+	(function() {
+	  var template = Handlebars.template, templates = Handlebars.templates = Handlebars.templates || {};
+	templates['profile-list'] = template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
+	    return "<li><img src=\"../images/sample/sample-page-avatar1.png\" /></li>\n<li><img src=\"../images/sample/sample-page-avatar2.png\" /></li>\n<li><img src=\"../images/sample/sample-page-avatar3.png\" /></li>\n<li><img src=\"../images/sample/sample-page-avatar4.png\" /></li>\n<li><img src=\"../images/sample/sample-page-avatar5.png\" /></li>\n<img class=\"avatar-active\" src=\"../images/sample/sample-page-avatar-active.png\" />\n";
+	},"useData":true});
 	})();
 
 /***/ },
