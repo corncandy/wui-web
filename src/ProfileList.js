@@ -3,7 +3,7 @@
 var create = function(options) {
   var $el = options.$el;
 
-  $el.html('Profile List');
+  $el.html(Handlebars.templates['profile-list']());
 };
 
 module.exports = {

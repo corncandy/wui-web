@@ -56,14 +56,34 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 	
-	var ProfileList = __webpack_require__(1);
+	__webpack_require__(1);
+	
+	var ProfileList = __webpack_require__(2);
 	
 	module.exports = {
-	  ProfileList: ProfileList
+	  ProfileList: ProfileList,
+	  templates: Handlebars.templates
 	};
 
 /***/ },
 /* 1 */
+/***/ function(module, exports) {
+
+	"use strict";
+	
+	(function () {
+	    var template = Handlebars.template,
+	        templates = Handlebars.templates = Handlebars.templates || {};
+	    templates['profile-list'] = template({ "compiler": [6, ">= 2.0.0-beta.1"], "main": function main(depth0, helpers, partials, data) {
+	            return "<div>Profile List</div>\n";
+	        }, "useData": true });
+	    templates['sample-template'] = template({ "compiler": [6, ">= 2.0.0-beta.1"], "main": function main(depth0, helpers, partials, data) {
+	            return "<div>Sample Template</div>\n";
+	        }, "useData": true });
+	})();
+
+/***/ },
+/* 2 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -71,7 +91,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	var create = function create(options) {
 	  var $el = options.$el;
 	
-	  $el.html('Profile List');
+	  $el.html(Handlebars.templates['profile-list']());
 	};
 	
 	module.exports = {
