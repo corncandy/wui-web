@@ -45,6 +45,7 @@ ReactDOM.render(
         jsx: props => <ReactSpecimen {...props} />
       }}
       title={title}
+      logoSrc="https://corncandy.github.io/wd-web/images/wui-web-logo.png"
     />
   </div>,
   document.getElementById('app')
