@@ -2,10 +2,10 @@
 
 require('../templates/templates.js');
 
-var ProfileList = require('./profile-list');
+var SiteHeader = require('./site-header.js');
 
 module.exports = {
-  ProfileList: ProfileList,
+  SiteHeader: SiteHeader,
   templates: Handlebars.templates
 };
 
