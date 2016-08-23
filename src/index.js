@@ -14,14 +14,15 @@ var DataDialog = require('./data-dialog.js');
 module.exports = {
   SiteHeader: SiteHeader,
   getUrl : tools.getUrl,
-  getParams : tools.getParams,
+  link : tools.getParams,
   ajax:tools.ajax,
-  warningAlert : alert,
+  format:tools.getFormat,
+  alert : alert,
   DataTable : DataTable,
   DataFilter : DataFilter,
   DataPaginator:DataPaginator,
-  PageLoading:PageLoading,
-  DataDialog:DataDialog,
+  loading:PageLoading,
+  dataDialog:DataDialog,
   templates: Handlebars.templates
 };
 

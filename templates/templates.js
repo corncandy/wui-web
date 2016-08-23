@@ -106,12 +106,25 @@ templates['data-dialog'] = template({"1":function(depth0,helpers,partials,data) 
     var stack1;
 
   return "<div style=\"text-align: right; margin-right: 20px;\">\n"
-    + ((stack1 = helpers['if'].call(depth0,(depth0 != null ? depth0.cancelFunc : depth0),{"name":"if","hash":{},"fn":this.program(23, data, 0),"inverse":this.program(25, data, 0),"data":data})) != null ? stack1 : "")
+    + ((stack1 = helpers['if'].call(depth0,(depth0 != null ? depth0.cancelButton : depth0),{"name":"if","hash":{},"fn":this.program(23, data, 0),"inverse":this.program(25, data, 0),"data":data})) != null ? stack1 : "")
+    + ((stack1 = helpers['if'].call(depth0,(depth0 != null ? depth0.confirmButton : depth0),{"name":"if","hash":{},"fn":this.program(27, data, 0),"inverse":this.program(29, data, 0),"data":data})) != null ? stack1 : "")
     + "</div>\n";
 },"23":function(depth0,helpers,partials,data) {
-    return "            <button id=\"cancelButton\"  class=\"btn btn-default cancel-button\">拒绝</button>\n            <button id=\"modal\" data-toggle=\"modal\" data-target=\"#myModal\" class=\"btn btn-primary save-button\">通过</button>\n";
+    var helper;
+
+  return "            <button id=\"cancelButton\"  class=\"btn btn-default cancel-button\">"
+    + this.escapeExpression(((helper = (helper = helpers.confirmButton || (depth0 != null ? depth0.confirmButton : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0,{"name":"confirmButton","hash":{},"data":data}) : helper)))
+    + "</button>\n";
 },"25":function(depth0,helpers,partials,data) {
-    return "            <button  onclick=\"history.go(-1)\" class=\"btn btn-default cancel-button\">取消</button>\n            <button id=\"modal\" data-toggle=\"modal\" data-target=\"#myModal\" class=\"btn btn-primary save-button\">保存</button>\n";
+    return "            <button id=\"cancelButton\"  class=\"btn btn-default cancel-button\">取消</button>\n";
+},"27":function(depth0,helpers,partials,data) {
+    var helper;
+
+  return "            <button id=\"modal\" data-toggle=\"modal\" data-target=\"#myModal\" class=\"btn btn-primary save-button\">"
+    + this.escapeExpression(((helper = (helper = helpers.confirmButton || (depth0 != null ? depth0.confirmButton : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0,{"name":"confirmButton","hash":{},"data":data}) : helper)))
+    + "</button>\n";
+},"29":function(depth0,helpers,partials,data) {
+    return "            <button id=\"modal\" data-toggle=\"modal\" data-target=\"#myModal\" class=\"btn btn-primary save-button\">确定</button>\n";
 },"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
     var stack1;
 

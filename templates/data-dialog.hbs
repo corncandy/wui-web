@@ -82,12 +82,15 @@
   </div>
   {{else}}
 <div style="text-align: right; margin-right: 20px;">
-    {{#if cancelFunc}}
-            <button id="cancelButton"  class="btn btn-default cancel-button">拒绝</button>
-            <button id="modal" data-toggle="modal" data-target="#myModal" class="btn btn-primary save-button">通过</button>
+    {{#if cancelButton}}
+            <button id="cancelButton"  class="btn btn-default cancel-button">{{confirmButton}}</button>
     {{else}}
-            <button  onclick="history.go(-1)" class="btn btn-default cancel-button">取消</button>
-            <button id="modal" data-toggle="modal" data-target="#myModal" class="btn btn-primary save-button">保存</button>
+            <button id="cancelButton"  class="btn btn-default cancel-button">取消</button>
+    {{/if}}
+    {{#if confirmButton}}
+            <button id="modal" data-toggle="modal" data-target="#myModal" class="btn btn-primary save-button">{{confirmButton}}</button>
+    {{else}}
+            <button id="modal" data-toggle="modal" data-target="#myModal" class="btn btn-primary save-button">确定</button>
     {{/if}}
 </div>
 {{/if}}

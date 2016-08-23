@@ -3,7 +3,7 @@
  */
 
 'use strict';
-
+var tools = require('./wui-tools.js');
 var create = function(options) {
   var $el = options.$el;
   var meta = options.meta;
@@ -14,6 +14,9 @@ var create = function(options) {
       name: field,
       value: options.list[field] ? options.list[field] : ''
     });
+    if(target.formatDate){
+      target.value = tools.getFormat(target.value,'yyyy-MM-dd HH:mm:ss');
+    }
     switch (target.type) {
       case 'text':
         target.text = true;
@@ -45,10 +48,13 @@ var create = function(options) {
     cancelFunc: cancelFunc ? true : false,
     textInfo: options.textInfo ? options.textInfo : false,
     textInfoShow:options.textInfoShow ? options.textInfoShow : false,
-    buttonHide: options.buttonHide ? true : false
+    buttonHide: options.buttonHide ? true : false,
+    confirmButton : options.confirmButton ? options.confirmButton : false,
+    cancelButton : options.cancelButton ?  options.cancelButton : false
   }));
 
   $('#modal').click(function() {
+    event.preventDefault();
     var paramArray = parentdiv.find('form').serializeArray();
     var paramObj = {};
     paramArray.forEach(function(param) {
@@ -58,6 +64,7 @@ var create = function(options) {
   });
 
   $('#cancelButton').click(function() {
+    event.preventDefault();
     var paramArray = parentdiv.find('form').serializeArray();
     var paramObj = {};
     paramArray.forEach(function(param) {

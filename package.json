@@ -96,6 +96,7 @@
     "test:lint"
   ],
   "dependencies": {
-    "handlebars": "^3.0.3"
+    "handlebars": "^3.0.3",
+    "xss": "^0.2.13"
   }
 }
