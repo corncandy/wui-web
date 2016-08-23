@@ -15,7 +15,7 @@
     "gh-pages:deploy": "gh-pages -d gh-pages",
     "gh-pages:stats": "webpack --profile --json > stats.json",
     "dist": "npm run styles && npm run hbs && webpack",
-    "dist:min": "webpack",
+    "dist:min": "npm run styles && npm run hbs && webpack",
     "dist:modules": "rimraf ./dist-modules && babel ./src --out-dir ./dist-modules",
     "pretest": "npm run test:lint",
     "preversion": "npm run test && npm run dist && npm run dist:min && git commit --allow-empty -am \"Update dist\"",
