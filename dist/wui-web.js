@@ -66,6 +66,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	var DataPaginator = __webpack_require__(18);
 	var PageLoading = __webpack_require__(15);
 	var DataDialog = __webpack_require__(19);
+	var ContentHeader = __webpack_require__(20);
 	module.exports = {
 	  SiteHeader: SiteHeader,
 	  getUrl: tools.getUrl,
@@ -78,6 +79,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  DataPaginator: DataPaginator,
 	  loading: PageLoading,
 	  dataDialog: DataDialog,
+	  ContentHeader: ContentHeader,
 	  templates: Handlebars.templates
 	};
 
@@ -87,6 +89,31 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	(function() {
 	  var template = Handlebars.template, templates = Handlebars.templates = Handlebars.templates || {};
+	templates['content-header'] = template({"1":function(depth0,helpers,partials,data) {
+	    var stack1;
+	
+	  return ((stack1 = helpers['if'].call(depth0,(depth0 != null ? depth0.url : depth0),{"name":"if","hash":{},"fn":this.program(2, data, 0),"inverse":this.program(4, data, 0),"data":data})) != null ? stack1 : "");
+	},"2":function(depth0,helpers,partials,data) {
+	    var helper, alias1=helpers.helperMissing, alias2="function", alias3=this.escapeExpression;
+	
+	  return "      <li><i class=\"fa fa-angle-right\" /></li>\n      <li><a href=\""
+	    + alias3(((helper = (helper = helpers.url || (depth0 != null ? depth0.url : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"url","hash":{},"data":data}) : helper)))
+	    + "\">"
+	    + alias3(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"name","hash":{},"data":data}) : helper)))
+	    + "</a></li>\n";
+	},"4":function(depth0,helpers,partials,data) {
+	    var helper;
+	
+	  return "      <li><i class=\"fa fa-angle-right\" /></li>\n      <li>"
+	    + this.escapeExpression(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0,{"name":"name","hash":{},"data":data}) : helper)))
+	    + "</li>\n";
+	},"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
+	    var stack1;
+	
+	  return "<ul class=\"wui-breadcrumb\">\n  <li><a href=\"home.html\">首页</a></li>\n"
+	    + ((stack1 = helpers.each.call(depth0,(depth0 != null ? depth0.paths : depth0),{"name":"each","hash":{},"fn":this.program(1, data, 0),"inverse":this.noop,"data":data})) != null ? stack1 : "")
+	    + "</ul>\n";
+	},"useData":true});
 	templates['data-dialog'] = template({"1":function(depth0,helpers,partials,data) {
 	    var stack1, helper;
 	
@@ -193,12 +220,25 @@ return /******/ (function(modules) { // webpackBootstrap
 	    var stack1;
 	
 	  return "<div style=\"text-align: right; margin-right: 20px;\">\n"
-	    + ((stack1 = helpers['if'].call(depth0,(depth0 != null ? depth0.cancelFunc : depth0),{"name":"if","hash":{},"fn":this.program(23, data, 0),"inverse":this.program(25, data, 0),"data":data})) != null ? stack1 : "")
+	    + ((stack1 = helpers['if'].call(depth0,(depth0 != null ? depth0.cancelButton : depth0),{"name":"if","hash":{},"fn":this.program(23, data, 0),"inverse":this.program(25, data, 0),"data":data})) != null ? stack1 : "")
+	    + ((stack1 = helpers['if'].call(depth0,(depth0 != null ? depth0.confirmButton : depth0),{"name":"if","hash":{},"fn":this.program(27, data, 0),"inverse":this.program(29, data, 0),"data":data})) != null ? stack1 : "")
 	    + "</div>\n";
 	},"23":function(depth0,helpers,partials,data) {
-	    return "            <button id=\"cancelButton\"  class=\"btn btn-default cancel-button\">拒绝</button>\n            <button id=\"modal\" data-toggle=\"modal\" data-target=\"#myModal\" class=\"btn btn-primary save-button\">通过</button>\n";
+	    var helper;
+	
+	  return "            <button id=\"cancelButton\"  class=\"btn btn-default cancel-button\">"
+	    + this.escapeExpression(((helper = (helper = helpers.confirmButton || (depth0 != null ? depth0.confirmButton : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0,{"name":"confirmButton","hash":{},"data":data}) : helper)))
+	    + "</button>\n";
 	},"25":function(depth0,helpers,partials,data) {
-	    return "            <button  onclick=\"history.go(-1)\" class=\"btn btn-default cancel-button\">取消</button>\n            <button id=\"modal\" data-toggle=\"modal\" data-target=\"#myModal\" class=\"btn btn-primary save-button\">保存</button>\n";
+	    return "            <button id=\"cancelButton\"  class=\"btn btn-default cancel-button\">取消</button>\n";
+	},"27":function(depth0,helpers,partials,data) {
+	    var helper;
+	
+	  return "            <button id=\"modal\" data-toggle=\"modal\" data-target=\"#myModal\" class=\"btn btn-primary save-button\">"
+	    + this.escapeExpression(((helper = (helper = helpers.confirmButton || (depth0 != null ? depth0.confirmButton : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0,{"name":"confirmButton","hash":{},"data":data}) : helper)))
+	    + "</button>\n";
+	},"29":function(depth0,helpers,partials,data) {
+	    return "            <button id=\"modal\" data-toggle=\"modal\" data-target=\"#myModal\" class=\"btn btn-primary save-button\">确定</button>\n";
 	},"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
 	    var stack1;
 	
@@ -2254,7 +2294,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 /***/ },
 /* 16 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
 	/**
 	 * Created by liukai on 16/8/18.
@@ -2262,6 +2302,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	'use strict';
 	
+	var tools = __webpack_require__(3);
 	var create = function create(options) {
 	  var $el = options.$el;
 	  var meta = options.meta;
@@ -2276,7 +2317,19 @@ return /******/ (function(modules) { // webpackBootstrap
 	  });
 	  var list = options.list.map(function (item) {
 	    return fields.map(function (field) {
-	      return item[field] == null ? '' : item[field];
+	      switch (meta[field].type) {
+	        case 'select':
+	          meta[field].options.map(function (sub) {
+	            if (item[field] == sub.value) {
+	              item[field] = sub.label;
+	            }
+	          });
+	          break;
+	        case 'date':
+	          item[field] = tools.getFormat(item[field], 'yyyy-MM-dd HH:mm:ss');
+	          break;
+	      }
+	      return item[field];
 	    });
 	  });
 	  var ops = operations && operations.map(function (operation, index) {
@@ -2315,11 +2368,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	    });
 	    return itemList;
 	  };
+	
 	  groups && groups.forEach(function (group, i) {
 	    //$el.find("input[name='checkBox']").each(function(j) {
 	    //  $(this).click(group.callidback.bind(null, options.list[j]));
 	    //});
-	    $el.find('#' + group.id).click(group.callback.bind(null, checkItem));
+	    $el.find('#' + group.id).click(function () {
+	      var items = checkItem();
+	      group.callback(items);
+	    });
 	  });
 	  var buttonStatus = function buttonStatus() {
 	    groups.forEach(function (group, i) {
@@ -2510,7 +2567,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 /***/ },
 /* 19 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
 	/**
 	 * Created by liukai on 16/8/18.
@@ -2518,6 +2575,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	'use strict';
 	
+	var tools = __webpack_require__(3);
 	var create = function create(options) {
 	  var $el = options.$el;
 	  var meta = options.meta;
@@ -2528,6 +2586,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	      name: field,
 	      value: options.list[field] ? options.list[field] : ''
 	    });
+	    if (target.formatDate) {
+	      target.value = tools.getFormat(target.value, 'yyyy-MM-dd HH:mm:ss');
+	    }
 	    switch (target.type) {
 	      case 'text':
 	        target.text = true;
@@ -2559,7 +2620,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	    cancelFunc: cancelFunc ? true : false,
 	    textInfo: options.textInfo ? options.textInfo : false,
 	    textInfoShow: options.textInfoShow ? options.textInfoShow : false,
-	    buttonHide: options.buttonHide ? true : false
+	    buttonHide: options.buttonHide ? true : false,
+	    confirmButton: options.confirmButton ? options.confirmButton : false,
+	    cancelButton: options.cancelButton ? options.cancelButton : false
 	  }));
 	
 	  $('#modal').click(function () {
@@ -2569,9 +2632,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	      paramObj[param.name] = param.value;
 	    });
 	    onConfirm(paramObj);
+	    event.preventDefault();
 	  });
 	
 	  $('#cancelButton').click(function () {
+	    event.preventDefault();
 	    var paramArray = parentdiv.find('form').serializeArray();
 	    var paramObj = {};
 	    paramArray.forEach(function (param) {
@@ -2579,6 +2644,29 @@ return /******/ (function(modules) { // webpackBootstrap
 	    });
 	    cancelFunc(paramObj);
 	  });
+	};
+	
+	module.exports = {
+	  create: create
+	};
+
+/***/ },
+/* 20 */
+/***/ function(module, exports) {
+
+	/**
+	 * Created by liukai on 16/8/24.
+	 */
+	
+	'use strict';
+	
+	var create = function create(options) {
+	  var $el = options.$el;
+	  var meta = options.meta;
+	
+	  $el.html(Handlebars.templates['content-header']({
+	    paths: meta
+	  }));
 	};
 	
 	module.exports = {

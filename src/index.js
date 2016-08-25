@@ -11,6 +11,8 @@ var DataFilter = require('./data-filter');
 var DataPaginator = require('./data-paginator.js');
 var PageLoading = require('./page-loading.js');
 var DataDialog = require('./data-dialog.js');
+var ContentHeader = require('./content-header.js');
+var ModalDialog = require('./modal-dialog.js');
 module.exports = {
   SiteHeader: SiteHeader,
   getUrl : tools.getUrl,
@@ -23,6 +25,8 @@ module.exports = {
   DataPaginator:DataPaginator,
   loading:PageLoading,
   dataDialog:DataDialog,
+  ContentHeader:ContentHeader,
+  ModalDialog:ModalDialog,
   templates: Handlebars.templates
 };
 

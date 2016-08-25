@@ -11,7 +11,8 @@
   ],
   "globals": {
     "jest": false,
-    "Handlebars": false
+    "Handlebars": false,
+    "$": false
   },
   "rules": {
     "no-underscore-dangle": 0,

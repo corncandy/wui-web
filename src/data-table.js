@@ -4,7 +4,7 @@
 
 
 'use strict';
-
+var tools = require('./wui-tools.js');
 var create = function(options) {
   var $el = options.$el;
   var meta = options.meta;
@@ -19,7 +19,19 @@ var create = function(options) {
   });
   var list = options.list.map(function(item) {
     return fields.map(function(field) {
-      return item[field] == null ? '' : item[field];
+      switch (meta[field].type) {
+        case 'select':
+          meta[field].options.map(function(sub){
+            if(item[field] == sub.value){
+               item[field] = sub.label;
+            }
+          })
+          break;
+        case 'date':
+          item[field] = tools.getFormat(item[field],'yyyy-MM-dd HH:mm:ss');
+          break;
+      }
+      return item[field];
     });
   });
   var ops = operations && operations.map(function(operation, index) {
@@ -57,12 +69,16 @@ var create = function(options) {
       itemList.push(item)
     })
     return itemList;
-  }
+  };
+
   groups && groups.forEach(function(group, i) {
     //$el.find("input[name='checkBox']").each(function(j) {
     //  $(this).click(group.callidback.bind(null, options.list[j]));
     //});
-    $el.find('#' + group.id).click(group.callback.bind(null, checkItem));
+    $el.find('#' + group.id).click(function () {
+      var items = checkItem();
+      group.callback(items);
+    });
   });
   var buttonStatus = function() {
     groups.forEach(function(group, i) {
