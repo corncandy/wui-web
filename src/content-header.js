@@ -8,7 +8,8 @@ var create = function(options) {
   var meta = options.meta;
 
   $el.html(Handlebars.templates['content-header']({
-    paths:meta
+    home: WUI.t('首页') ,
+    paths: meta
   }));
 
 };

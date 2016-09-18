@@ -1,48 +1,128 @@
-<form class="box-header">
+<form class="box-header" novalidate>
   <div class="row">
   {{#each fields}}
-  <div class="col-sm-4 form-group" >
-      <div class="col-sm-4 form-group" >
+    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 form-group" >
+      <div class="col-sm-3 form-group" style="padding:7px 0;">
               <span>{{label}}</span>
       </div>
-      <div class="col-sm-8 form-group">
+      <div class="col-sm-9 form-group">
+      {{#if readOnly}}
+          <input
+                  type="text"
+                  class="form-control "
+                  readOnly
+                  style="overflow: hidden; whitewhite-space: nowrap;text-overflow: ellipsis;"
+                  title="{{{value}}}"
+                  name={{{name}}}
+                          value='{{{value}}}'
+                  placeholder={{label}}>
+          </input>
+      {{else}}
             {{#if text}}
-                {{#if edit}}
-                    <input
-                            type="text"
-                            maxlength="11"
-                            class="form-control "
-                            style="overflow: hidden; whitewhite-space: nowrap;text-overflow: ellipsis;"
-                            title="{{{value}}}"
-                            name={{{name}}}
-                                    value='{{{value}}}'
-                            placeholder={{label}}>
-                    </input>
+                    {{#if required}}
+                        <div class="control-group">
+                            <div class="controls">
+                                <input
+                                        type="text"
+                                        maxlength="{{maxLength}}"
+                                                class="form-control"
+                                        style="overflow: hidden; whitewhite-space: nowrap;text-overflow: ellipsis;"
+                                        title="{{{value}}}"
+                                        required="required"
+                                        name={{{name}}}
+                                                value='{{{value}}}'
+                                        placeholder={{label}}
+                                        data-validation-required-message='{{label}}字段不能为空'
+                                >
+                                </input>
+                                <p id="{{name}}help" class="help-block" style="color: red"></p>
+                            </div>
+                        </div>
+                      {{else}}
+                        <div class="control-group">
+                            <div class="controls">
+                                <input
+                                        type="text"
+                                        maxlength="{{maxLength}}"
+                                                class="form-control"
+                                        style="overflow: hidden; whitewhite-space: nowrap;text-overflow: ellipsis;"
+                                        title="{{{value}}}"
+                                        name={{{name}}}
+                                                value='{{{value}}}'
+                                        placeholder={{label}}
+                                >
+                                </input>
+                                <p id="{{name}}help" class="help-block" style="color: red"></p>
+                            </div>
+                        </div>
+                      {{/if}}
+            {{/if}}
+
+            {{#if number}}
+                {{#if required}}
+                    <div class="control-group">
+                        <div class="controls">
+                            <input title="{{{value}}}"
+                                   maxlength="{{maxLength}}"
+                                   class="form-control "
+                                   name={{{name}}}
+                                   value='{{{value}}}'
+                                   placeholder={{label}}
+                                   required="required"
+                                   type="number"
+                                   data-validation-Maxlength-message="请输入数字长度不能大于{{maxLength}}"
+                                   data-validation-required-message='{{label}}字段不能为空'
+                                   id="number" >
+                            <p id="{{{name}}}help" class="help-block" style="color: red"></p>
+                        </div>
+                    </div>
                 {{else}}
-                <input
-                        type="text"
-                        class="form-control "
-                        readOnly
-                        style="overflow: hidden; whitewhite-space: nowrap;text-overflow: ellipsis;"
-                        title="{{{value}}}"
-                        name={{{name}}}
-                        value='{{{value}}}'
-                        placeholder={{label}}>
-                </input>
+                    <div class="control-group">
+                        <div class="controls">
+                            <input title="{{{value}}}"
+                                   maxlength="{{maxLength}}"
+                                   class="form-control "
+                                   name={{{name}}}
+                                           value='{{{value}}}'
+                                   placeholder={{label}}
+                                           type="number"  data-validation-Maxlength-message=
+                                           "请输入数字长度不能大于{{maxLength}}" id="number" >
+                            <p id="{{{name}}}help" class="help-block" style="color: red"></p>
+                        </div>
+                    </div>
+
                 {{/if}}
             {{/if}}
-            {{#if number}}
-                <input
-                        type="number"
-                        maxlength="11"
-                        class="form-control "
-                        style="overflow: hidden; whitewhite-space: nowrap;text-overflow: ellipsis;"
-                        title="{{{value}}}"
-                        name={{{name}}}
-                                value='{{{value}}}'
-                        placeholder={{label}}>
-                </input>
+
+            {{#if email}}
+              {{#if required}}
+                <div class="control-group">
+                    <div class="controls">
+                        <input title="{{{value}}}"
+                               class="form-control "
+                               name={{{name}}}
+                                       value='{{{value}}}'
+                               placeholder={{label}}
+                                       type="email"  data-validation-required-message=
+                                "请填写邮箱地址" data-validation-validemail-message="请输入正确的邮箱格式" id="email" required="" >
+                        <p id="{{{name}}}help" class="help-block" style="color: red"></p>
+                    </div>
+                </div>
+                {{else}}
+                      <div class="control-group">
+                          <div class="controls">
+                              <input title="{{{value}}}"
+                                     class="form-control "
+                                     name={{{name}}}
+                                             value='{{{value}}}'
+                                     placeholder={{label}}
+                                             type="email" data-validation-validemail-message="请输入正确的邮箱格式" id="email">
+                              <p id="{{{name}}}help" class="help-block" style="color: red"></p>
+                          </div>
+                      </div>
+                {{/if}}
             {{/if}}
+
             {{#if select}}
                 <select
                         name={{name}}
@@ -56,8 +136,17 @@
                   {{/each}}
                 </select>
             {{/if}}
+      {{/if}}
       </div>
-  </div>
+    </div>
+
+    {{#dividedIndex @index 2}}
+      <div class="clearfix visible-sm-block"></div>
+    {{/dividedIndex}}
+
+    {{#dividedIndex @index 3}}
+      <div class="clearfix visible-lg-block visible-md-block"></div>
+    {{/dividedIndex}}
   {{/each}}
     </div>
   {{#if textInfo}}
@@ -75,22 +164,30 @@
 
   </div>
   {{/if}}
-</form>
-{{#if buttonHide}}
-  <div class="row">
 
-  </div>
+
+
+  {{#if buttonHide}}
+      <div class="row">
+
+      </div>
   {{else}}
-<div style="text-align: right; margin-right: 20px;">
-    {{#if cancelButton}}
-            <button id="cancelButton"  class="btn btn-default cancel-button">{{confirmButton}}</button>
-    {{else}}
-            <button id="cancelButton"  class="btn btn-default cancel-button">取消</button>
-    {{/if}}
-    {{#if confirmButton}}
-            <button id="modal" class="btn btn-primary save-button">{{confirmButton}}</button>
-    {{else}}
-            <button id="modal" class="btn btn-primary save-button">确定</button>
-    {{/if}}
-</div>
-{{/if}}
+      <div style="text-align: right; margin-right: 20px;">
+        {{#if onCancel}}
+          {{#if cancelButton}}
+              <button id="cancelButton"  class="btn btn-default cancel-button">{{confirmButton}}</button>
+          {{else}}
+              <button id="cancelButton"  class="btn btn-default cancel-button">取消</button>
+          {{/if}}
+        {{/if}}
+        {{#if onConfirm}}
+          {{#if confirmButton}}
+              <button id="modal" type="submit"  class="btn btn-primary save-button">{{confirmButton}}</button>
+          {{else}}
+              <button id="modal" type="submit" class="btn btn-primary save-button">确定</button>
+          {{/if}}
+        {{/if}}
+      </div>
+  {{/if}}
+
+</form>

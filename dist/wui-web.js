@@ -57,22 +57,26 @@ return /******/ (function(modules) { // webpackBootstrap
 	'use strict';
 	
 	__webpack_require__(1);
+	__webpack_require__(2);
 	
-	var SiteHeader = __webpack_require__(2);
-	var tools = __webpack_require__(3);
-	var alert = __webpack_require__(14);
-	var DataTable = __webpack_require__(16);
-	var DataFilter = __webpack_require__(17);
-	var DataPaginator = __webpack_require__(18);
-	var PageLoading = __webpack_require__(15);
-	var DataDialog = __webpack_require__(19);
-	var ContentHeader = __webpack_require__(20);
+	var SiteHeader = __webpack_require__(3);
+	var tools = __webpack_require__(4);
+	var alert = __webpack_require__(15);
+	var DataTable = __webpack_require__(17);
+	var DataFilter = __webpack_require__(18);
+	var DataPaginator = __webpack_require__(19);
+	var PageLoading = __webpack_require__(16);
+	var DataDialog = __webpack_require__(20);
+	var ContentHeader = __webpack_require__(21);
+	var ModalDialog = __webpack_require__(22);
+	var ConfirmDialog = __webpack_require__(23);
 	module.exports = {
 	  SiteHeader: SiteHeader,
 	  getUrl: tools.getUrl,
 	  link: tools.getParams,
 	  ajax: tools.ajax,
 	  format: tools.getFormat,
+	  t: tools.t,
 	  alert: alert,
 	  DataTable: DataTable,
 	  DataFilter: DataFilter,
@@ -80,6 +84,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	  loading: PageLoading,
 	  dataDialog: DataDialog,
 	  ContentHeader: ContentHeader,
+	  ModalDialog: ModalDialog,
+	  ConfirmDialog: ConfirmDialog,
 	  templates: Handlebars.templates
 	};
 
@@ -89,6 +95,150 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	(function() {
 	  var template = Handlebars.template, templates = Handlebars.templates = Handlebars.templates || {};
+	templates['confirm-dialog'] = template({"1":function(depth0,helpers,partials,data) {
+	    var stack1, helper;
+	
+	  return "          <div class=\"col-sm-4 form-group\" >\n              <div class=\"col-sm-4 form-group\" >\n                  <span>"
+	    + this.escapeExpression(((helper = (helper = helpers.label || (depth0 != null ? depth0.label : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0,{"name":"label","hash":{},"data":data}) : helper)))
+	    + "</span>\n              </div>\n              <div class=\"col-sm-8 form-group\">\n"
+	    + ((stack1 = helpers['if'].call(depth0,(depth0 != null ? depth0.text : depth0),{"name":"if","hash":{},"fn":this.program(2, data, 0),"inverse":this.noop,"data":data})) != null ? stack1 : "")
+	    + ((stack1 = helpers['if'].call(depth0,(depth0 != null ? depth0.number : depth0),{"name":"if","hash":{},"fn":this.program(7, data, 0),"inverse":this.noop,"data":data})) != null ? stack1 : "")
+	    + ((stack1 = helpers['if'].call(depth0,(depth0 != null ? depth0.select : depth0),{"name":"if","hash":{},"fn":this.program(9, data, 0),"inverse":this.noop,"data":data})) != null ? stack1 : "")
+	    + "              </div>\n          </div>\n";
+	},"2":function(depth0,helpers,partials,data) {
+	    var stack1;
+	
+	  return ((stack1 = helpers['if'].call(depth0,(depth0 != null ? depth0.edit : depth0),{"name":"if","hash":{},"fn":this.program(3, data, 0),"inverse":this.program(5, data, 0),"data":data})) != null ? stack1 : "");
+	},"3":function(depth0,helpers,partials,data) {
+	    var stack1, helper, alias1=helpers.helperMissing, alias2="function";
+	
+	  return "                      <input\n                              type=\"text\"\n                              maxlength=\"11\"\n                              class=\"form-control \"\n                              style=\"overflow: hidden; whitewhite-space: nowrap;text-overflow: ellipsis;\"\n                              title=\""
+	    + ((stack1 = ((helper = (helper = helpers.value || (depth0 != null ? depth0.value : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"value","hash":{},"data":data}) : helper))) != null ? stack1 : "")
+	    + "\"\n                              name="
+	    + ((stack1 = ((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"name","hash":{},"data":data}) : helper))) != null ? stack1 : "")
+	    + "\n                                      value='"
+	    + ((stack1 = ((helper = (helper = helpers.value || (depth0 != null ? depth0.value : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"value","hash":{},"data":data}) : helper))) != null ? stack1 : "")
+	    + "'\n                              placeholder="
+	    + this.escapeExpression(((helper = (helper = helpers.label || (depth0 != null ? depth0.label : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"label","hash":{},"data":data}) : helper)))
+	    + ">\n                      </input>\n";
+	},"5":function(depth0,helpers,partials,data) {
+	    var stack1, helper, alias1=helpers.helperMissing, alias2="function";
+	
+	  return "                      <input\n                              type=\"text\"\n                              class=\"form-control \"\n                              readOnly\n                              style=\"overflow: hidden; whitewhite-space: nowrap;text-overflow: ellipsis;\"\n                              title=\""
+	    + ((stack1 = ((helper = (helper = helpers.value || (depth0 != null ? depth0.value : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"value","hash":{},"data":data}) : helper))) != null ? stack1 : "")
+	    + "\"\n                              name="
+	    + ((stack1 = ((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"name","hash":{},"data":data}) : helper))) != null ? stack1 : "")
+	    + "\n                                      value='"
+	    + ((stack1 = ((helper = (helper = helpers.value || (depth0 != null ? depth0.value : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"value","hash":{},"data":data}) : helper))) != null ? stack1 : "")
+	    + "'\n                              placeholder="
+	    + this.escapeExpression(((helper = (helper = helpers.label || (depth0 != null ? depth0.label : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"label","hash":{},"data":data}) : helper)))
+	    + ">\n                      </input>\n";
+	},"7":function(depth0,helpers,partials,data) {
+	    var stack1, helper, alias1=helpers.helperMissing, alias2="function";
+	
+	  return "                    <input\n                            type=\"number\"\n                            maxlength=\"11\"\n                            class=\"form-control \"\n                            style=\"overflow: hidden; whitewhite-space: nowrap;text-overflow: ellipsis;\"\n                            title=\""
+	    + ((stack1 = ((helper = (helper = helpers.value || (depth0 != null ? depth0.value : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"value","hash":{},"data":data}) : helper))) != null ? stack1 : "")
+	    + "\"\n                            name="
+	    + ((stack1 = ((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"name","hash":{},"data":data}) : helper))) != null ? stack1 : "")
+	    + "\n                                    value='"
+	    + ((stack1 = ((helper = (helper = helpers.value || (depth0 != null ? depth0.value : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"value","hash":{},"data":data}) : helper))) != null ? stack1 : "")
+	    + "'\n                            placeholder="
+	    + this.escapeExpression(((helper = (helper = helpers.label || (depth0 != null ? depth0.label : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"label","hash":{},"data":data}) : helper)))
+	    + ">\n                    </input>\n";
+	},"9":function(depth0,helpers,partials,data) {
+	    var stack1, helper;
+	
+	  return "                    <select\n                            name="
+	    + this.escapeExpression(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0,{"name":"name","hash":{},"data":data}) : helper)))
+	    + "\n                                    class=\"form-control\">\n"
+	    + ((stack1 = helpers.each.call(depth0,(depth0 != null ? depth0.options : depth0),{"name":"each","hash":{},"fn":this.program(10, data, 0),"inverse":this.noop,"data":data})) != null ? stack1 : "")
+	    + "                    </select>\n";
+	},"10":function(depth0,helpers,partials,data) {
+	    var stack1;
+	
+	  return ((stack1 = helpers['if'].call(depth0,(depth0 != null ? depth0.select : depth0),{"name":"if","hash":{},"fn":this.program(11, data, 0),"inverse":this.program(13, data, 0),"data":data})) != null ? stack1 : "");
+	},"11":function(depth0,helpers,partials,data) {
+	    var helper, alias1=helpers.helperMissing, alias2="function", alias3=this.escapeExpression;
+	
+	  return "                            <option value="
+	    + alias3(((helper = (helper = helpers.value || (depth0 != null ? depth0.value : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"value","hash":{},"data":data}) : helper)))
+	    + " selected=\"selected\">"
+	    + alias3(((helper = (helper = helpers.label || (depth0 != null ? depth0.label : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"label","hash":{},"data":data}) : helper)))
+	    + "</option>\n";
+	},"13":function(depth0,helpers,partials,data) {
+	    var helper, alias1=helpers.helperMissing, alias2="function", alias3=this.escapeExpression;
+	
+	  return "                            <option value="
+	    + alias3(((helper = (helper = helpers.value || (depth0 != null ? depth0.value : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"value","hash":{},"data":data}) : helper)))
+	    + ">"
+	    + alias3(((helper = (helper = helpers.label || (depth0 != null ? depth0.label : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"label","hash":{},"data":data}) : helper)))
+	    + "</option>\n";
+	},"15":function(depth0,helpers,partials,data) {
+	    var stack1;
+	
+	  return "      <div class=\"row col-sm-12  form-group\">\n          <div class=\"col-sm-2 form-group\" >\n              <span>"
+	    + this.escapeExpression(this.lambda(((stack1 = (depth0 != null ? depth0.textInfo : depth0)) != null ? stack1.label : stack1), depth0))
+	    + "</span>\n          </div>\n          <div class=\"col-sm-10 form-group\" id=\"reviewComment\">\n"
+	    + ((stack1 = helpers['if'].call(depth0,(depth0 != null ? depth0.textInfoShow : depth0),{"name":"if","hash":{},"fn":this.program(16, data, 0),"inverse":this.program(18, data, 0),"data":data})) != null ? stack1 : "")
+	    + "          </div>\n\n      </div>\n";
+	},"16":function(depth0,helpers,partials,data) {
+	    var stack1, helper, alias1=this.escapeExpression;
+	
+	  return "                <textarea class=\"form-control\"  readonly=\"readonly\" name=\""
+	    + alias1(this.lambda(((stack1 = (depth0 != null ? depth0.textInfo : depth0)) != null ? stack1.name : stack1), depth0))
+	    + "\">"
+	    + alias1(((helper = (helper = helpers.textInfoShow || (depth0 != null ? depth0.textInfoShow : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0,{"name":"textInfoShow","hash":{},"data":data}) : helper)))
+	    + "</textarea>\n";
+	},"18":function(depth0,helpers,partials,data) {
+	    var stack1;
+	
+	  return "                <textarea class=\"form-control\"  name=\""
+	    + this.escapeExpression(this.lambda(((stack1 = (depth0 != null ? depth0.textInfo : depth0)) != null ? stack1.name : stack1), depth0))
+	    + "\"></textarea>\n";
+	},"20":function(depth0,helpers,partials,data) {
+	    var stack1;
+	
+	  return ((stack1 = helpers['if'].call(depth0,(depth0 != null ? depth0.cancelButton : depth0),{"name":"if","hash":{},"fn":this.program(21, data, 0),"inverse":this.program(23, data, 0),"data":data})) != null ? stack1 : "");
+	},"21":function(depth0,helpers,partials,data) {
+	    var helper;
+	
+	  return "        <button id=\"cancelButton\"  class=\"btn btn-default cancel-button\">"
+	    + this.escapeExpression(((helper = (helper = helpers.confirmButton || (depth0 != null ? depth0.confirmButton : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0,{"name":"confirmButton","hash":{},"data":data}) : helper)))
+	    + "</button>\n";
+	},"23":function(depth0,helpers,partials,data) {
+	    return "        <button id=\"cancelButton\"  class=\"btn btn-default cancel-button\">取消</button>\n";
+	},"25":function(depth0,helpers,partials,data) {
+	    var stack1;
+	
+	  return ((stack1 = helpers['if'].call(depth0,(depth0 != null ? depth0.cancelButton : depth0),{"name":"if","hash":{},"fn":this.program(26, data, 0),"inverse":this.program(28, data, 0),"data":data})) != null ? stack1 : "");
+	},"26":function(depth0,helpers,partials,data) {
+	    var helper;
+	
+	  return "        <button id=\"cancelButton\" data-dismiss=\"modal\"  class=\"btn btn-default cancel-button\">"
+	    + this.escapeExpression(((helper = (helper = helpers.confirmButton || (depth0 != null ? depth0.confirmButton : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0,{"name":"confirmButton","hash":{},"data":data}) : helper)))
+	    + "</button>\n";
+	},"28":function(depth0,helpers,partials,data) {
+	    return "        <button id=\"cancelButton\" data-dismiss=\"modal\"  class=\"btn btn-default cancel-button\">取消</button>\n";
+	},"30":function(depth0,helpers,partials,data) {
+	    var helper;
+	
+	  return "      <button id=\"modal\"  class=\"btn btn-primary save-button\">"
+	    + this.escapeExpression(((helper = (helper = helpers.confirmButton || (depth0 != null ? depth0.confirmButton : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0,{"name":"confirmButton","hash":{},"data":data}) : helper)))
+	    + "</button>\n";
+	},"32":function(depth0,helpers,partials,data) {
+	    return "      <button id=\"modal\"  class=\"btn btn-primary save-button\">确定</button>\n";
+	},"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
+	    var stack1;
+	
+	  return "<form class=\"box-header\">\n    <div class=\"row\">\n"
+	    + ((stack1 = helpers.each.call(depth0,(depth0 != null ? depth0.fields : depth0),{"name":"each","hash":{},"fn":this.program(1, data, 0),"inverse":this.noop,"data":data})) != null ? stack1 : "")
+	    + "    </div>\n"
+	    + ((stack1 = helpers['if'].call(depth0,(depth0 != null ? depth0.textInfo : depth0),{"name":"if","hash":{},"fn":this.program(15, data, 0),"inverse":this.noop,"data":data})) != null ? stack1 : "")
+	    + "</form>\n<div style=\"text-align: right; margin-right: 20px;\">\n"
+	    + ((stack1 = helpers['if'].call(depth0,(depth0 != null ? depth0.onCancel : depth0),{"name":"if","hash":{},"fn":this.program(20, data, 0),"inverse":this.program(25, data, 0),"data":data})) != null ? stack1 : "")
+	    + ((stack1 = helpers['if'].call(depth0,(depth0 != null ? depth0.confirmButton : depth0),{"name":"if","hash":{},"fn":this.program(30, data, 0),"inverse":this.program(32, data, 0),"data":data})) != null ? stack1 : "")
+	    + "</div>\n";
+	},"useData":true});
 	templates['content-header'] = template({"1":function(depth0,helpers,partials,data) {
 	    var stack1;
 	
@@ -108,75 +258,172 @@ return /******/ (function(modules) { // webpackBootstrap
 	    + this.escapeExpression(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0,{"name":"name","hash":{},"data":data}) : helper)))
 	    + "</li>\n";
 	},"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
-	    var stack1;
+	    var stack1, helper;
 	
-	  return "<ul class=\"wui-breadcrumb\">\n  <li><a href=\"home.html\">首页</a></li>\n"
+	  return "<ul class=\"wui-breadcrumb\">\n  <li><a href=\"home.html\">"
+	    + this.escapeExpression(((helper = (helper = helpers.home || (depth0 != null ? depth0.home : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0,{"name":"home","hash":{},"data":data}) : helper)))
+	    + "</a></li>\n"
 	    + ((stack1 = helpers.each.call(depth0,(depth0 != null ? depth0.paths : depth0),{"name":"each","hash":{},"fn":this.program(1, data, 0),"inverse":this.noop,"data":data})) != null ? stack1 : "")
 	    + "</ul>\n";
 	},"useData":true});
 	templates['data-dialog'] = template({"1":function(depth0,helpers,partials,data) {
-	    var stack1, helper;
+	    var stack1, helper, alias1=helpers.helperMissing;
 	
-	  return "  <div class=\"col-sm-4 form-group\" >\n      <div class=\"col-sm-4 form-group\" >\n              <span>"
-	    + this.escapeExpression(((helper = (helper = helpers.label || (depth0 != null ? depth0.label : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0,{"name":"label","hash":{},"data":data}) : helper)))
-	    + "</span>\n      </div>\n      <div class=\"col-sm-8 form-group\">\n"
-	    + ((stack1 = helpers['if'].call(depth0,(depth0 != null ? depth0.text : depth0),{"name":"if","hash":{},"fn":this.program(2, data, 0),"inverse":this.noop,"data":data})) != null ? stack1 : "")
-	    + ((stack1 = helpers['if'].call(depth0,(depth0 != null ? depth0.number : depth0),{"name":"if","hash":{},"fn":this.program(7, data, 0),"inverse":this.noop,"data":data})) != null ? stack1 : "")
-	    + ((stack1 = helpers['if'].call(depth0,(depth0 != null ? depth0.select : depth0),{"name":"if","hash":{},"fn":this.program(9, data, 0),"inverse":this.noop,"data":data})) != null ? stack1 : "")
-	    + "      </div>\n  </div>\n";
+	  return "    <div class=\"col-lg-4 col-md-4 col-sm-6 col-xs-12 form-group\" >\n      <div class=\"col-sm-3 form-group\" style=\"padding:7px 0;\">\n              <span>"
+	    + this.escapeExpression(((helper = (helper = helpers.label || (depth0 != null ? depth0.label : depth0)) != null ? helper : alias1),(typeof helper === "function" ? helper.call(depth0,{"name":"label","hash":{},"data":data}) : helper)))
+	    + "</span>\n      </div>\n      <div class=\"col-sm-9 form-group\">\n"
+	    + ((stack1 = helpers['if'].call(depth0,(depth0 != null ? depth0.readOnly : depth0),{"name":"if","hash":{},"fn":this.program(2, data, 0),"inverse":this.program(4, data, 0),"data":data})) != null ? stack1 : "")
+	    + "      </div>\n    </div>\n\n"
+	    + ((stack1 = (helpers.dividedIndex || (depth0 && depth0.dividedIndex) || alias1).call(depth0,(data && data.index),2,{"name":"dividedIndex","hash":{},"fn":this.program(26, data, 0),"inverse":this.noop,"data":data})) != null ? stack1 : "")
+	    + "\n"
+	    + ((stack1 = (helpers.dividedIndex || (depth0 && depth0.dividedIndex) || alias1).call(depth0,(data && data.index),3,{"name":"dividedIndex","hash":{},"fn":this.program(28, data, 0),"inverse":this.noop,"data":data})) != null ? stack1 : "");
 	},"2":function(depth0,helpers,partials,data) {
+	    var stack1, helper, alias1=helpers.helperMissing, alias2="function";
+	
+	  return "          <input\n                  type=\"text\"\n                  class=\"form-control \"\n                  readOnly\n                  style=\"overflow: hidden; whitewhite-space: nowrap;text-overflow: ellipsis;\"\n                  title=\""
+	    + ((stack1 = ((helper = (helper = helpers.value || (depth0 != null ? depth0.value : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"value","hash":{},"data":data}) : helper))) != null ? stack1 : "")
+	    + "\"\n                  name="
+	    + ((stack1 = ((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"name","hash":{},"data":data}) : helper))) != null ? stack1 : "")
+	    + "\n                          value='"
+	    + ((stack1 = ((helper = (helper = helpers.value || (depth0 != null ? depth0.value : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"value","hash":{},"data":data}) : helper))) != null ? stack1 : "")
+	    + "'\n                  placeholder="
+	    + this.escapeExpression(((helper = (helper = helpers.label || (depth0 != null ? depth0.label : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"label","hash":{},"data":data}) : helper)))
+	    + ">\n          </input>\n";
+	},"4":function(depth0,helpers,partials,data) {
 	    var stack1;
 	
-	  return ((stack1 = helpers['if'].call(depth0,(depth0 != null ? depth0.edit : depth0),{"name":"if","hash":{},"fn":this.program(3, data, 0),"inverse":this.program(5, data, 0),"data":data})) != null ? stack1 : "");
-	},"3":function(depth0,helpers,partials,data) {
-	    var stack1, helper, alias1=helpers.helperMissing, alias2="function";
-	
-	  return "                    <input\n                            type=\"text\"\n                            maxlength=\"11\"\n                            class=\"form-control \"\n                            style=\"overflow: hidden; whitewhite-space: nowrap;text-overflow: ellipsis;\"\n                            title=\""
-	    + ((stack1 = ((helper = (helper = helpers.value || (depth0 != null ? depth0.value : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"value","hash":{},"data":data}) : helper))) != null ? stack1 : "")
-	    + "\"\n                            name="
-	    + ((stack1 = ((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"name","hash":{},"data":data}) : helper))) != null ? stack1 : "")
-	    + "\n                                    value='"
-	    + ((stack1 = ((helper = (helper = helpers.value || (depth0 != null ? depth0.value : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"value","hash":{},"data":data}) : helper))) != null ? stack1 : "")
-	    + "'\n                            placeholder="
-	    + this.escapeExpression(((helper = (helper = helpers.label || (depth0 != null ? depth0.label : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"label","hash":{},"data":data}) : helper)))
-	    + ">\n                    </input>\n";
+	  return ((stack1 = helpers['if'].call(depth0,(depth0 != null ? depth0.text : depth0),{"name":"if","hash":{},"fn":this.program(5, data, 0),"inverse":this.noop,"data":data})) != null ? stack1 : "")
+	    + "\n"
+	    + ((stack1 = helpers['if'].call(depth0,(depth0 != null ? depth0.number : depth0),{"name":"if","hash":{},"fn":this.program(10, data, 0),"inverse":this.noop,"data":data})) != null ? stack1 : "")
+	    + "\n"
+	    + ((stack1 = helpers['if'].call(depth0,(depth0 != null ? depth0.email : depth0),{"name":"if","hash":{},"fn":this.program(15, data, 0),"inverse":this.noop,"data":data})) != null ? stack1 : "")
+	    + "\n"
+	    + ((stack1 = helpers['if'].call(depth0,(depth0 != null ? depth0.select : depth0),{"name":"if","hash":{},"fn":this.program(20, data, 0),"inverse":this.noop,"data":data})) != null ? stack1 : "");
 	},"5":function(depth0,helpers,partials,data) {
+	    var stack1;
+	
+	  return ((stack1 = helpers['if'].call(depth0,(depth0 != null ? depth0.required : depth0),{"name":"if","hash":{},"fn":this.program(6, data, 0),"inverse":this.program(8, data, 0),"data":data})) != null ? stack1 : "");
+	},"6":function(depth0,helpers,partials,data) {
+	    var stack1, helper, alias1=helpers.helperMissing, alias2="function", alias3=this.escapeExpression;
+	
+	  return "                        <div class=\"control-group\">\n                            <div class=\"controls\">\n                                <input\n                                        type=\"text\"\n                                        maxlength=\""
+	    + alias3(((helper = (helper = helpers.maxLength || (depth0 != null ? depth0.maxLength : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"maxLength","hash":{},"data":data}) : helper)))
+	    + "\"\n                                                class=\"form-control\"\n                                        style=\"overflow: hidden; whitewhite-space: nowrap;text-overflow: ellipsis;\"\n                                        title=\""
+	    + ((stack1 = ((helper = (helper = helpers.value || (depth0 != null ? depth0.value : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"value","hash":{},"data":data}) : helper))) != null ? stack1 : "")
+	    + "\"\n                                        required=\"required\"\n                                        name="
+	    + ((stack1 = ((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"name","hash":{},"data":data}) : helper))) != null ? stack1 : "")
+	    + "\n                                                value='"
+	    + ((stack1 = ((helper = (helper = helpers.value || (depth0 != null ? depth0.value : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"value","hash":{},"data":data}) : helper))) != null ? stack1 : "")
+	    + "'\n                                        placeholder="
+	    + alias3(((helper = (helper = helpers.label || (depth0 != null ? depth0.label : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"label","hash":{},"data":data}) : helper)))
+	    + "\n                                        data-validation-required-message='"
+	    + alias3(((helper = (helper = helpers.label || (depth0 != null ? depth0.label : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"label","hash":{},"data":data}) : helper)))
+	    + "字段不能为空'\n                                >\n                                </input>\n                                <p id=\""
+	    + alias3(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"name","hash":{},"data":data}) : helper)))
+	    + "help\" class=\"help-block\" style=\"color: red\"></p>\n                            </div>\n                        </div>\n";
+	},"8":function(depth0,helpers,partials,data) {
+	    var stack1, helper, alias1=helpers.helperMissing, alias2="function", alias3=this.escapeExpression;
+	
+	  return "                        <div class=\"control-group\">\n                            <div class=\"controls\">\n                                <input\n                                        type=\"text\"\n                                        maxlength=\""
+	    + alias3(((helper = (helper = helpers.maxLength || (depth0 != null ? depth0.maxLength : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"maxLength","hash":{},"data":data}) : helper)))
+	    + "\"\n                                                class=\"form-control\"\n                                        style=\"overflow: hidden; whitewhite-space: nowrap;text-overflow: ellipsis;\"\n                                        title=\""
+	    + ((stack1 = ((helper = (helper = helpers.value || (depth0 != null ? depth0.value : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"value","hash":{},"data":data}) : helper))) != null ? stack1 : "")
+	    + "\"\n                                        name="
+	    + ((stack1 = ((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"name","hash":{},"data":data}) : helper))) != null ? stack1 : "")
+	    + "\n                                                value='"
+	    + ((stack1 = ((helper = (helper = helpers.value || (depth0 != null ? depth0.value : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"value","hash":{},"data":data}) : helper))) != null ? stack1 : "")
+	    + "'\n                                        placeholder="
+	    + alias3(((helper = (helper = helpers.label || (depth0 != null ? depth0.label : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"label","hash":{},"data":data}) : helper)))
+	    + "\n                                >\n                                </input>\n                                <p id=\""
+	    + alias3(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"name","hash":{},"data":data}) : helper)))
+	    + "help\" class=\"help-block\" style=\"color: red\"></p>\n                            </div>\n                        </div>\n";
+	},"10":function(depth0,helpers,partials,data) {
+	    var stack1;
+	
+	  return ((stack1 = helpers['if'].call(depth0,(depth0 != null ? depth0.required : depth0),{"name":"if","hash":{},"fn":this.program(11, data, 0),"inverse":this.program(13, data, 0),"data":data})) != null ? stack1 : "");
+	},"11":function(depth0,helpers,partials,data) {
+	    var stack1, helper, alias1=helpers.helperMissing, alias2="function", alias3=this.escapeExpression;
+	
+	  return "                    <div class=\"control-group\">\n                        <div class=\"controls\">\n                            <input title=\""
+	    + ((stack1 = ((helper = (helper = helpers.value || (depth0 != null ? depth0.value : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"value","hash":{},"data":data}) : helper))) != null ? stack1 : "")
+	    + "\"\n                                   maxlength=\""
+	    + alias3(((helper = (helper = helpers.maxLength || (depth0 != null ? depth0.maxLength : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"maxLength","hash":{},"data":data}) : helper)))
+	    + "\"\n                                   class=\"form-control \"\n                                   name="
+	    + ((stack1 = ((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"name","hash":{},"data":data}) : helper))) != null ? stack1 : "")
+	    + "\n                                   value='"
+	    + ((stack1 = ((helper = (helper = helpers.value || (depth0 != null ? depth0.value : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"value","hash":{},"data":data}) : helper))) != null ? stack1 : "")
+	    + "'\n                                   placeholder="
+	    + alias3(((helper = (helper = helpers.label || (depth0 != null ? depth0.label : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"label","hash":{},"data":data}) : helper)))
+	    + "\n                                   required=\"required\"\n                                   type=\"number\"\n                                   data-validation-Maxlength-message=\"请输入数字长度不能大于"
+	    + alias3(((helper = (helper = helpers.maxLength || (depth0 != null ? depth0.maxLength : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"maxLength","hash":{},"data":data}) : helper)))
+	    + "\"\n                                   data-validation-required-message='"
+	    + alias3(((helper = (helper = helpers.label || (depth0 != null ? depth0.label : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"label","hash":{},"data":data}) : helper)))
+	    + "字段不能为空'\n                                   id=\"number\" >\n                            <p id=\""
+	    + ((stack1 = ((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"name","hash":{},"data":data}) : helper))) != null ? stack1 : "")
+	    + "help\" class=\"help-block\" style=\"color: red\"></p>\n                        </div>\n                    </div>\n";
+	},"13":function(depth0,helpers,partials,data) {
+	    var stack1, helper, alias1=helpers.helperMissing, alias2="function", alias3=this.escapeExpression;
+	
+	  return "                    <div class=\"control-group\">\n                        <div class=\"controls\">\n                            <input title=\""
+	    + ((stack1 = ((helper = (helper = helpers.value || (depth0 != null ? depth0.value : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"value","hash":{},"data":data}) : helper))) != null ? stack1 : "")
+	    + "\"\n                                   maxlength=\""
+	    + alias3(((helper = (helper = helpers.maxLength || (depth0 != null ? depth0.maxLength : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"maxLength","hash":{},"data":data}) : helper)))
+	    + "\"\n                                   class=\"form-control \"\n                                   name="
+	    + ((stack1 = ((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"name","hash":{},"data":data}) : helper))) != null ? stack1 : "")
+	    + "\n                                           value='"
+	    + ((stack1 = ((helper = (helper = helpers.value || (depth0 != null ? depth0.value : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"value","hash":{},"data":data}) : helper))) != null ? stack1 : "")
+	    + "'\n                                   placeholder="
+	    + alias3(((helper = (helper = helpers.label || (depth0 != null ? depth0.label : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"label","hash":{},"data":data}) : helper)))
+	    + "\n                                           type=\"number\"  data-validation-Maxlength-message=\n                                           \"请输入数字长度不能大于"
+	    + alias3(((helper = (helper = helpers.maxLength || (depth0 != null ? depth0.maxLength : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"maxLength","hash":{},"data":data}) : helper)))
+	    + "\" id=\"number\" >\n                            <p id=\""
+	    + ((stack1 = ((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"name","hash":{},"data":data}) : helper))) != null ? stack1 : "")
+	    + "help\" class=\"help-block\" style=\"color: red\"></p>\n                        </div>\n                    </div>\n\n";
+	},"15":function(depth0,helpers,partials,data) {
+	    var stack1;
+	
+	  return ((stack1 = helpers['if'].call(depth0,(depth0 != null ? depth0.required : depth0),{"name":"if","hash":{},"fn":this.program(16, data, 0),"inverse":this.program(18, data, 0),"data":data})) != null ? stack1 : "");
+	},"16":function(depth0,helpers,partials,data) {
 	    var stack1, helper, alias1=helpers.helperMissing, alias2="function";
 	
-	  return "                <input\n                        type=\"text\"\n                        class=\"form-control \"\n                        readOnly\n                        style=\"overflow: hidden; whitewhite-space: nowrap;text-overflow: ellipsis;\"\n                        title=\""
+	  return "                <div class=\"control-group\">\n                    <div class=\"controls\">\n                        <input title=\""
 	    + ((stack1 = ((helper = (helper = helpers.value || (depth0 != null ? depth0.value : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"value","hash":{},"data":data}) : helper))) != null ? stack1 : "")
-	    + "\"\n                        name="
+	    + "\"\n                               class=\"form-control \"\n                               name="
 	    + ((stack1 = ((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"name","hash":{},"data":data}) : helper))) != null ? stack1 : "")
-	    + "\n                        value='"
+	    + "\n                                       value='"
 	    + ((stack1 = ((helper = (helper = helpers.value || (depth0 != null ? depth0.value : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"value","hash":{},"data":data}) : helper))) != null ? stack1 : "")
-	    + "'\n                        placeholder="
+	    + "'\n                               placeholder="
 	    + this.escapeExpression(((helper = (helper = helpers.label || (depth0 != null ? depth0.label : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"label","hash":{},"data":data}) : helper)))
-	    + ">\n                </input>\n";
-	},"7":function(depth0,helpers,partials,data) {
+	    + "\n                                       type=\"email\"  data-validation-required-message=\n                                \"请填写邮箱地址\" data-validation-validemail-message=\"请输入正确的邮箱格式\" id=\"email\" required=\"\" >\n                        <p id=\""
+	    + ((stack1 = ((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"name","hash":{},"data":data}) : helper))) != null ? stack1 : "")
+	    + "help\" class=\"help-block\" style=\"color: red\"></p>\n                    </div>\n                </div>\n";
+	},"18":function(depth0,helpers,partials,data) {
 	    var stack1, helper, alias1=helpers.helperMissing, alias2="function";
 	
-	  return "                <input\n                        type=\"number\"\n                        maxlength=\"11\"\n                        class=\"form-control \"\n                        style=\"overflow: hidden; whitewhite-space: nowrap;text-overflow: ellipsis;\"\n                        title=\""
+	  return "                      <div class=\"control-group\">\n                          <div class=\"controls\">\n                              <input title=\""
 	    + ((stack1 = ((helper = (helper = helpers.value || (depth0 != null ? depth0.value : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"value","hash":{},"data":data}) : helper))) != null ? stack1 : "")
-	    + "\"\n                        name="
+	    + "\"\n                                     class=\"form-control \"\n                                     name="
 	    + ((stack1 = ((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"name","hash":{},"data":data}) : helper))) != null ? stack1 : "")
-	    + "\n                                value='"
+	    + "\n                                             value='"
 	    + ((stack1 = ((helper = (helper = helpers.value || (depth0 != null ? depth0.value : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"value","hash":{},"data":data}) : helper))) != null ? stack1 : "")
-	    + "'\n                        placeholder="
+	    + "'\n                                     placeholder="
 	    + this.escapeExpression(((helper = (helper = helpers.label || (depth0 != null ? depth0.label : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"label","hash":{},"data":data}) : helper)))
-	    + ">\n                </input>\n";
-	},"9":function(depth0,helpers,partials,data) {
+	    + "\n                                             type=\"email\" data-validation-validemail-message=\"请输入正确的邮箱格式\" id=\"email\">\n                              <p id=\""
+	    + ((stack1 = ((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"name","hash":{},"data":data}) : helper))) != null ? stack1 : "")
+	    + "help\" class=\"help-block\" style=\"color: red\"></p>\n                          </div>\n                      </div>\n";
+	},"20":function(depth0,helpers,partials,data) {
 	    var stack1, helper;
 	
 	  return "                <select\n                        name="
 	    + this.escapeExpression(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0,{"name":"name","hash":{},"data":data}) : helper)))
 	    + "\n                                class=\"form-control\">\n"
-	    + ((stack1 = helpers.each.call(depth0,(depth0 != null ? depth0.options : depth0),{"name":"each","hash":{},"fn":this.program(10, data, 0),"inverse":this.noop,"data":data})) != null ? stack1 : "")
+	    + ((stack1 = helpers.each.call(depth0,(depth0 != null ? depth0.options : depth0),{"name":"each","hash":{},"fn":this.program(21, data, 0),"inverse":this.noop,"data":data})) != null ? stack1 : "")
 	    + "                </select>\n";
-	},"10":function(depth0,helpers,partials,data) {
+	},"21":function(depth0,helpers,partials,data) {
 	    var stack1;
 	
-	  return ((stack1 = helpers['if'].call(depth0,(depth0 != null ? depth0.select : depth0),{"name":"if","hash":{},"fn":this.program(11, data, 0),"inverse":this.program(13, data, 0),"data":data})) != null ? stack1 : "");
-	},"11":function(depth0,helpers,partials,data) {
+	  return ((stack1 = helpers['if'].call(depth0,(depth0 != null ? depth0.select : depth0),{"name":"if","hash":{},"fn":this.program(22, data, 0),"inverse":this.program(24, data, 0),"data":data})) != null ? stack1 : "");
+	},"22":function(depth0,helpers,partials,data) {
 	    var helper, alias1=helpers.helperMissing, alias2="function", alias3=this.escapeExpression;
 	
 	  return "                      <option value="
@@ -184,7 +431,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    + " selected=\"selected\">"
 	    + alias3(((helper = (helper = helpers.label || (depth0 != null ? depth0.label : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"label","hash":{},"data":data}) : helper)))
 	    + "</option>\n";
-	},"13":function(depth0,helpers,partials,data) {
+	},"24":function(depth0,helpers,partials,data) {
 	    var helper, alias1=helpers.helperMissing, alias2="function", alias3=this.escapeExpression;
 	
 	  return "                      <option value="
@@ -192,15 +439,19 @@ return /******/ (function(modules) { // webpackBootstrap
 	    + ">"
 	    + alias3(((helper = (helper = helpers.label || (depth0 != null ? depth0.label : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"label","hash":{},"data":data}) : helper)))
 	    + "</option>\n";
-	},"15":function(depth0,helpers,partials,data) {
+	},"26":function(depth0,helpers,partials,data) {
+	    return "      <div class=\"clearfix visible-sm-block\"></div>\n";
+	},"28":function(depth0,helpers,partials,data) {
+	    return "      <div class=\"clearfix visible-lg-block visible-md-block\"></div>\n";
+	},"30":function(depth0,helpers,partials,data) {
 	    var stack1;
 	
 	  return "  <div class=\"row col-sm-12  form-group\">\n      <div class=\"col-sm-2 form-group\" >\n          <span>"
 	    + this.escapeExpression(this.lambda(((stack1 = (depth0 != null ? depth0.textInfo : depth0)) != null ? stack1.label : stack1), depth0))
 	    + "</span>\n      </div>\n      <div class=\"col-sm-10 form-group\" id=\"reviewComment\">\n"
-	    + ((stack1 = helpers['if'].call(depth0,(depth0 != null ? depth0.textInfoShow : depth0),{"name":"if","hash":{},"fn":this.program(16, data, 0),"inverse":this.program(18, data, 0),"data":data})) != null ? stack1 : "")
+	    + ((stack1 = helpers['if'].call(depth0,(depth0 != null ? depth0.textInfoShow : depth0),{"name":"if","hash":{},"fn":this.program(31, data, 0),"inverse":this.program(33, data, 0),"data":data})) != null ? stack1 : "")
 	    + "      </div>\n\n  </div>\n";
-	},"16":function(depth0,helpers,partials,data) {
+	},"31":function(depth0,helpers,partials,data) {
 	    var stack1, helper, alias1=this.escapeExpression;
 	
 	  return "              <textarea class=\"form-control\"  readonly=\"readonly\" name=\""
@@ -208,46 +459,55 @@ return /******/ (function(modules) { // webpackBootstrap
 	    + "\">"
 	    + alias1(((helper = (helper = helpers.textInfoShow || (depth0 != null ? depth0.textInfoShow : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0,{"name":"textInfoShow","hash":{},"data":data}) : helper)))
 	    + "</textarea>\n";
-	},"18":function(depth0,helpers,partials,data) {
+	},"33":function(depth0,helpers,partials,data) {
 	    var stack1;
 	
 	  return "              <textarea class=\"form-control\"  name=\""
 	    + this.escapeExpression(this.lambda(((stack1 = (depth0 != null ? depth0.textInfo : depth0)) != null ? stack1.name : stack1), depth0))
 	    + "\"></textarea>\n";
-	},"20":function(depth0,helpers,partials,data) {
-	    return "  <div class=\"row\">\n\n  </div>\n";
-	},"22":function(depth0,helpers,partials,data) {
+	},"35":function(depth0,helpers,partials,data) {
+	    return "      <div class=\"row\">\n\n      </div>\n";
+	},"37":function(depth0,helpers,partials,data) {
 	    var stack1;
 	
-	  return "<div style=\"text-align: right; margin-right: 20px;\">\n"
-	    + ((stack1 = helpers['if'].call(depth0,(depth0 != null ? depth0.cancelButton : depth0),{"name":"if","hash":{},"fn":this.program(23, data, 0),"inverse":this.program(25, data, 0),"data":data})) != null ? stack1 : "")
-	    + ((stack1 = helpers['if'].call(depth0,(depth0 != null ? depth0.confirmButton : depth0),{"name":"if","hash":{},"fn":this.program(27, data, 0),"inverse":this.program(29, data, 0),"data":data})) != null ? stack1 : "")
-	    + "</div>\n";
-	},"23":function(depth0,helpers,partials,data) {
+	  return "      <div style=\"text-align: right; margin-right: 20px;\">\n"
+	    + ((stack1 = helpers['if'].call(depth0,(depth0 != null ? depth0.onCancel : depth0),{"name":"if","hash":{},"fn":this.program(38, data, 0),"inverse":this.noop,"data":data})) != null ? stack1 : "")
+	    + ((stack1 = helpers['if'].call(depth0,(depth0 != null ? depth0.onConfirm : depth0),{"name":"if","hash":{},"fn":this.program(43, data, 0),"inverse":this.noop,"data":data})) != null ? stack1 : "")
+	    + "      </div>\n";
+	},"38":function(depth0,helpers,partials,data) {
+	    var stack1;
+	
+	  return ((stack1 = helpers['if'].call(depth0,(depth0 != null ? depth0.cancelButton : depth0),{"name":"if","hash":{},"fn":this.program(39, data, 0),"inverse":this.program(41, data, 0),"data":data})) != null ? stack1 : "");
+	},"39":function(depth0,helpers,partials,data) {
 	    var helper;
 	
-	  return "            <button id=\"cancelButton\"  class=\"btn btn-default cancel-button\">"
+	  return "              <button id=\"cancelButton\"  class=\"btn btn-default cancel-button\">"
 	    + this.escapeExpression(((helper = (helper = helpers.confirmButton || (depth0 != null ? depth0.confirmButton : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0,{"name":"confirmButton","hash":{},"data":data}) : helper)))
 	    + "</button>\n";
-	},"25":function(depth0,helpers,partials,data) {
-	    return "            <button id=\"cancelButton\"  class=\"btn btn-default cancel-button\">取消</button>\n";
-	},"27":function(depth0,helpers,partials,data) {
+	},"41":function(depth0,helpers,partials,data) {
+	    return "              <button id=\"cancelButton\"  class=\"btn btn-default cancel-button\">取消</button>\n";
+	},"43":function(depth0,helpers,partials,data) {
+	    var stack1;
+	
+	  return ((stack1 = helpers['if'].call(depth0,(depth0 != null ? depth0.confirmButton : depth0),{"name":"if","hash":{},"fn":this.program(44, data, 0),"inverse":this.program(46, data, 0),"data":data})) != null ? stack1 : "");
+	},"44":function(depth0,helpers,partials,data) {
 	    var helper;
 	
-	  return "            <button id=\"modal\" data-toggle=\"modal\" data-target=\"#myModal\" class=\"btn btn-primary save-button\">"
+	  return "              <button id=\"modal\" type=\"submit\"  class=\"btn btn-primary save-button\">"
 	    + this.escapeExpression(((helper = (helper = helpers.confirmButton || (depth0 != null ? depth0.confirmButton : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0,{"name":"confirmButton","hash":{},"data":data}) : helper)))
 	    + "</button>\n";
-	},"29":function(depth0,helpers,partials,data) {
-	    return "            <button id=\"modal\" data-toggle=\"modal\" data-target=\"#myModal\" class=\"btn btn-primary save-button\">确定</button>\n";
+	},"46":function(depth0,helpers,partials,data) {
+	    return "              <button id=\"modal\" type=\"submit\" class=\"btn btn-primary save-button\">确定</button>\n";
 	},"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
 	    var stack1;
 	
-	  return "<form class=\"box-header\">\n  <div class=\"row\">\n"
+	  return "<form class=\"box-header\" novalidate>\n  <div class=\"row\">\n"
 	    + ((stack1 = helpers.each.call(depth0,(depth0 != null ? depth0.fields : depth0),{"name":"each","hash":{},"fn":this.program(1, data, 0),"inverse":this.noop,"data":data})) != null ? stack1 : "")
 	    + "    </div>\n"
-	    + ((stack1 = helpers['if'].call(depth0,(depth0 != null ? depth0.textInfo : depth0),{"name":"if","hash":{},"fn":this.program(15, data, 0),"inverse":this.noop,"data":data})) != null ? stack1 : "")
-	    + "</form>\n"
-	    + ((stack1 = helpers['if'].call(depth0,(depth0 != null ? depth0.buttonHide : depth0),{"name":"if","hash":{},"fn":this.program(20, data, 0),"inverse":this.program(22, data, 0),"data":data})) != null ? stack1 : "");
+	    + ((stack1 = helpers['if'].call(depth0,(depth0 != null ? depth0.textInfo : depth0),{"name":"if","hash":{},"fn":this.program(30, data, 0),"inverse":this.noop,"data":data})) != null ? stack1 : "")
+	    + "\n\n\n"
+	    + ((stack1 = helpers['if'].call(depth0,(depth0 != null ? depth0.buttonHide : depth0),{"name":"if","hash":{},"fn":this.program(35, data, 0),"inverse":this.program(37, data, 0),"data":data})) != null ? stack1 : "")
+	    + "\n</form>\n";
 	},"useData":true});
 	templates['data-filter'] = template({"1":function(depth0,helpers,partials,data) {
 	    var stack1, helper;
@@ -441,6 +701,33 @@ return /******/ (function(modules) { // webpackBootstrap
 	    + ((stack1 = helpers['if'].call(depth0,(depth0 != null ? depth0.groups : depth0),{"name":"if","hash":{},"fn":this.program(18, data, 0, blockParams, depths),"inverse":this.noop,"data":data})) != null ? stack1 : "")
 	    + "</div>\n";
 	},"useData":true,"useDepths":true});
+	templates['modal-dialog'] = template({"1":function(depth0,helpers,partials,data) {
+	    var stack1, helper;
+	
+	  return "                      "
+	    + ((stack1 = ((helper = (helper = helpers.title || (depth0 != null ? depth0.title : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0,{"name":"title","hash":{},"data":data}) : helper))) != null ? stack1 : "")
+	    + "\n";
+	},"3":function(depth0,helpers,partials,data) {
+	    var stack1, helper;
+	
+	  return "                  <span>"
+	    + ((stack1 = ((helper = (helper = helpers.message || (depth0 != null ? depth0.message : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0,{"name":"message","hash":{},"data":data}) : helper))) != null ? stack1 : "")
+	    + "</span>\n";
+	},"5":function(depth0,helpers,partials,data) {
+	    return "                  <button id=\"cancelButton\" class=\"btn btn-default cancel-button\">取消</button>\n";
+	},"7":function(depth0,helpers,partials,data) {
+	    return "                  <button id=\"cancelButton\" data-dismiss=\"modal\"  class=\"btn btn-default cancel-button\">取消</button>\n";
+	},"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
+	    var stack1;
+	
+	  return "<div class=\"modal fade\" id=\"myModal\" tabindex=\"-1\" role=\"dialog\"\n     aria-labelledby=\"myModalLabel\" aria-hidden=\"true\" >\n    <div class='modal-dialog' style=\"width: 80%\">\n        <div class='modal-content'>\n            <div class='modal-header'>\n                <button type='button' class='close' data-dismiss='modal' aria-hidden=\"true\">\n                    <span aria-hidden='true'>×</span>\n                </button>\n                <h4 class='modal-title'>\n"
+	    + ((stack1 = helpers['if'].call(depth0,(depth0 != null ? depth0.title : depth0),{"name":"if","hash":{},"fn":this.program(1, data, 0),"inverse":this.noop,"data":data})) != null ? stack1 : "")
+	    + "                </h4>\n            </div>\n            <div class='modal-body'>\n"
+	    + ((stack1 = helpers['if'].call(depth0,(depth0 != null ? depth0.message : depth0),{"name":"if","hash":{},"fn":this.program(3, data, 0),"inverse":this.noop,"data":data})) != null ? stack1 : "")
+	    + "            </div>\n            <div class='modal-footer'>\n"
+	    + ((stack1 = helpers['if'].call(depth0,(depth0 != null ? depth0.cancelButton : depth0),{"name":"if","hash":{},"fn":this.program(5, data, 0),"inverse":this.program(7, data, 0),"data":data})) != null ? stack1 : "")
+	    + "                  <button id=\"confirmButton\"  class=\"btn btn-primary save-button\">确定</button>\n            </div>\n        </div>\n    </div>\n</div>\n";
+	},"useData":true});
 	templates['page-alert'] = template({"1":function(depth0,helpers,partials,data) {
 	    var helper;
 	
@@ -492,6 +779,814 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 2 */
 /***/ function(module, exports) {
 
+	"use strict";
+	
+	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
+	
+	/* jqBootstrapValidation
+	 * A plugin for automating validation on Twitter Bootstrap formatted forms.
+	 *
+	 * v1.3.6
+	 *
+	 * License: MIT <http://opensource.org/licenses/mit-license.php> - see LICENSE file
+	 *
+	 * http://ReactiveRaven.github.com/jqBootstrapValidation/
+	 */
+	
+	(function ($) {
+	
+	  var createdElements = [];
+	
+	  var defaults = {
+	    options: {
+	      prependExistingHelpBlock: false,
+	      sniffHtml: true, // sniff for 'required', 'maxlength', etc
+	      preventSubmit: true, // stop the form submit event from firing if validation fails
+	      submitError: false, // function called if there is an error when trying to submit
+	      submitSuccess: false, // function called just before a successful submit event is sent to the server
+	      semanticallyStrict: false, // set to true to tidy up generated HTML output
+	      autoAdd: {
+	        helpBlocks: true
+	      },
+	      filter: function filter() {
+	        // return $(this).is(":visible"); // only validate elements you can see
+	        return true; // validate everything
+	      }
+	    },
+	    methods: {
+	      init: function init(options) {
+	
+	        var settings = $.extend(true, {}, defaults);
+	
+	        settings.options = $.extend(true, settings.options, options);
+	
+	        var $siblingElements = this;
+	
+	        var uniqueForms = $.unique($siblingElements.map(function () {
+	          return $(this).parents("form")[0];
+	        }).toArray());
+	
+	        $(uniqueForms).bind("submit", function (e) {
+	          var $form = $(this);
+	          var warningsFound = 0;
+	          var $inputs = $form.find("input,textarea,select").not("[type=submit],[type=image]").filter(settings.options.filter);
+	          $inputs.trigger("submit.validation").trigger("validationLostFocus.validation");
+	
+	          $inputs.each(function (i, el) {
+	            var $this = $(el),
+	                $controlGroup = $this.parents(".control-group").first();
+	            if ($controlGroup.hasClass("warning")) {
+	              $controlGroup.removeClass("warning").addClass("error");
+	              warningsFound++;
+	            }
+	          });
+	
+	          $inputs.trigger("validationLostFocus.validation");
+	
+	          if (warningsFound) {
+	            if (settings.options.preventSubmit) {
+	              e.preventDefault();
+	            }
+	            $form.addClass("error");
+	            if ($.isFunction(settings.options.submitError)) {
+	              settings.options.submitError($form, e, $inputs.jqBootstrapValidation("collectErrors", true));
+	            }
+	          } else {
+	            $form.removeClass("error");
+	            if ($.isFunction(settings.options.submitSuccess)) {
+	              settings.options.submitSuccess($form, e);
+	            }
+	          }
+	        });
+	
+	        return this.each(function () {
+	
+	          // Get references to everything we're interested in
+	          var $this = $(this),
+	              $controlGroup = $this.parents(".control-group").first(),
+	              $helpBlock = $controlGroup.find(".help-block").first(),
+	              $form = $this.parents("form").first(),
+	              validatorNames = [];
+	
+	          // create message container if not exists
+	          if (!$helpBlock.length && settings.options.autoAdd && settings.options.autoAdd.helpBlocks) {
+	            $helpBlock = $('<div class="help-block" />');
+	            $controlGroup.find('.controls').append($helpBlock);
+	            createdElements.push($helpBlock[0]);
+	          }
+	
+	          // =============================================================
+	          //                                     SNIFF HTML FOR VALIDATORS
+	          // =============================================================
+	
+	          // *snort sniff snuffle*
+	
+	          if (settings.options.sniffHtml) {
+	            var message = "";
+	            // ---------------------------------------------------------
+	            //                                                   PATTERN
+	            // ---------------------------------------------------------
+	            if ($this.attr("pattern") !== undefined) {
+	              message = "Not in the expected format<!-- data-validation-pattern-message to override -->";
+	              if ($this.data("validationPatternMessage")) {
+	                message = $this.data("validationPatternMessage");
+	              }
+	              $this.data("validationPatternMessage", message);
+	              $this.data("validationPatternRegex", $this.attr("pattern"));
+	            }
+	            // ---------------------------------------------------------
+	            //                                                       MAX
+	            // ---------------------------------------------------------
+	            if ($this.attr("max") !== undefined || $this.attr("aria-valuemax") !== undefined) {
+	              var max = $this.attr("max") !== undefined ? $this.attr("max") : $this.attr("aria-valuemax");
+	              message = "Too high: Maximum of '" + max + "'<!-- data-validation-max-message to override -->";
+	              if ($this.data("validationMaxMessage")) {
+	                message = $this.data("validationMaxMessage");
+	              }
+	              $this.data("validationMaxMessage", message);
+	              $this.data("validationMaxMax", max);
+	            }
+	            // ---------------------------------------------------------
+	            //                                                       MIN
+	            // ---------------------------------------------------------
+	            if ($this.attr("min") !== undefined || $this.attr("aria-valuemin") !== undefined) {
+	              var min = $this.attr("min") !== undefined ? $this.attr("min") : $this.attr("aria-valuemin");
+	              message = "Too low: Minimum of '" + min + "'<!-- data-validation-min-message to override -->";
+	              if ($this.data("validationMinMessage")) {
+	                message = $this.data("validationMinMessage");
+	              }
+	              $this.data("validationMinMessage", message);
+	              $this.data("validationMinMin", min);
+	            }
+	            // ---------------------------------------------------------
+	            //                                                 MAXLENGTH
+	            // ---------------------------------------------------------
+	            if ($this.attr("maxlength") !== undefined) {
+	              message = "Too long: Maximum of '" + $this.attr("maxlength") + "' characters<!-- data-validation-maxlength-message to override -->";
+	              if ($this.data("validationMaxlengthMessage")) {
+	                message = $this.data("validationMaxlengthMessage");
+	              }
+	              $this.data("validationMaxlengthMessage", message);
+	              $this.data("validationMaxlengthMaxlength", $this.attr("maxlength"));
+	            }
+	            // ---------------------------------------------------------
+	            //                                                 MINLENGTH
+	            // ---------------------------------------------------------
+	            if ($this.attr("minlength") !== undefined) {
+	              message = "Too short: Minimum of '" + $this.attr("minlength") + "' characters<!-- data-validation-minlength-message to override -->";
+	              if ($this.data("validationMinlengthMessage")) {
+	                message = $this.data("validationMinlengthMessage");
+	              }
+	              $this.data("validationMinlengthMessage", message);
+	              $this.data("validationMinlengthMinlength", $this.attr("minlength"));
+	            }
+	            // ---------------------------------------------------------
+	            //                                                  REQUIRED
+	            // ---------------------------------------------------------
+	            if ($this.attr("required") !== undefined || $this.attr("aria-required") !== undefined) {
+	              message = settings.builtInValidators.required.message;
+	              if ($this.data("validationRequiredMessage")) {
+	                message = $this.data("validationRequiredMessage");
+	              }
+	              $this.data("validationRequiredMessage", message);
+	            }
+	            // ---------------------------------------------------------
+	            //                                                    NUMBER
+	            // ---------------------------------------------------------
+	            if ($this.attr("type") !== undefined && $this.attr("type").toLowerCase() === "number") {
+	              message = settings.builtInValidators.number.message;
+	              if ($this.data("validationNumberMessage")) {
+	                message = $this.data("validationNumberMessage");
+	              }
+	              $this.data("validationNumberMessage", message);
+	            }
+	            // ---------------------------------------------------------
+	            //                                                     EMAIL
+	            // ---------------------------------------------------------
+	            if ($this.attr("type") !== undefined && $this.attr("type").toLowerCase() === "email") {
+	              message = "Not a valid email address<!-- data-validation-validemail-message to override -->";
+	              if ($this.data("validationValidemailMessage")) {
+	                message = $this.data("validationValidemailMessage");
+	              } else if ($this.data("validationEmailMessage")) {
+	                message = $this.data("validationEmailMessage");
+	              }
+	              $this.data("validationValidemailMessage", message);
+	            }
+	            // ---------------------------------------------------------
+	            //                                                MINCHECKED
+	            // ---------------------------------------------------------
+	            if ($this.attr("minchecked") !== undefined) {
+	              message = "Not enough options checked; Minimum of '" + $this.attr("minchecked") + "' required<!-- data-validation-minchecked-message to override -->";
+	              if ($this.data("validationMincheckedMessage")) {
+	                message = $this.data("validationMincheckedMessage");
+	              }
+	              $this.data("validationMincheckedMessage", message);
+	              $this.data("validationMincheckedMinchecked", $this.attr("minchecked"));
+	            }
+	            // ---------------------------------------------------------
+	            //                                                MAXCHECKED
+	            // ---------------------------------------------------------
+	            if ($this.attr("maxchecked") !== undefined) {
+	              message = "Too many options checked; Maximum of '" + $this.attr("maxchecked") + "' required<!-- data-validation-maxchecked-message to override -->";
+	              if ($this.data("validationMaxcheckedMessage")) {
+	                message = $this.data("validationMaxcheckedMessage");
+	              }
+	              $this.data("validationMaxcheckedMessage", message);
+	              $this.data("validationMaxcheckedMaxchecked", $this.attr("maxchecked"));
+	            }
+	          }
+	
+	          // =============================================================
+	          //                                       COLLECT VALIDATOR NAMES
+	          // =============================================================
+	
+	          // Get named validators
+	          if ($this.data("validation") !== undefined) {
+	            validatorNames = $this.data("validation").split(",");
+	          }
+	
+	          // Get extra ones defined on the element's data attributes
+	          $.each($this.data(), function (i, el) {
+	            var parts = i.replace(/([A-Z])/g, ",$1").split(",");
+	            if (parts[0] === "validation" && parts[1]) {
+	              validatorNames.push(parts[1]);
+	            }
+	          });
+	
+	          // =============================================================
+	          //                                     NORMALISE VALIDATOR NAMES
+	          // =============================================================
+	
+	          var validatorNamesToInspect = validatorNames;
+	          var newValidatorNamesToInspect = [];
+	
+	          do // repeatedly expand 'shortcut' validators into their real validators
+	          {
+	            // Uppercase only the first letter of each name
+	            $.each(validatorNames, function (i, el) {
+	              validatorNames[i] = formatValidatorName(el);
+	            });
+	
+	            // Remove duplicate validator names
+	            validatorNames = $.unique(validatorNames);
+	
+	            // Pull out the new validator names from each shortcut
+	            newValidatorNamesToInspect = [];
+	            $.each(validatorNamesToInspect, function (i, el) {
+	              if ($this.data("validation" + el + "Shortcut") !== undefined) {
+	                // Are these custom validators?
+	                // Pull them out!
+	                $.each($this.data("validation" + el + "Shortcut").split(","), function (i2, el2) {
+	                  newValidatorNamesToInspect.push(el2);
+	                });
+	              } else if (settings.builtInValidators[el.toLowerCase()]) {
+	                // Is this a recognised built-in?
+	                // Pull it out!
+	                var validator = settings.builtInValidators[el.toLowerCase()];
+	                if (validator.type.toLowerCase() === "shortcut") {
+	                  $.each(validator.shortcut.split(","), function (i, el) {
+	                    el = formatValidatorName(el);
+	                    newValidatorNamesToInspect.push(el);
+	                    validatorNames.push(el);
+	                  });
+	                }
+	              }
+	            });
+	
+	            validatorNamesToInspect = newValidatorNamesToInspect;
+	          } while (validatorNamesToInspect.length > 0);
+	
+	          // =============================================================
+	          //                                       SET UP VALIDATOR ARRAYS
+	          // =============================================================
+	
+	          var validators = {};
+	
+	          $.each(validatorNames, function (i, el) {
+	            // Set up the 'override' message
+	            var message = $this.data("validation" + el + "Message");
+	            var hasOverrideMessage = message !== undefined;
+	            var foundValidator = false;
+	            message = message ? message : "'" + el + "' validation failed <!-- Add attribute 'data-validation-" + el.toLowerCase() + "-message' to input to change this message -->";
+	
+	            $.each(settings.validatorTypes, function (validatorType, validatorTemplate) {
+	              if (validators[validatorType] === undefined) {
+	                validators[validatorType] = [];
+	              }
+	              if (!foundValidator && $this.data("validation" + el + formatValidatorName(validatorTemplate.name)) !== undefined) {
+	                validators[validatorType].push($.extend(true, {
+	                  name: formatValidatorName(validatorTemplate.name),
+	                  message: message
+	                }, validatorTemplate.init($this, el)));
+	                foundValidator = true;
+	              }
+	            });
+	
+	            if (!foundValidator && settings.builtInValidators[el.toLowerCase()]) {
+	
+	              var validator = $.extend(true, {}, settings.builtInValidators[el.toLowerCase()]);
+	              if (hasOverrideMessage) {
+	                validator.message = message;
+	              }
+	              var validatorType = validator.type.toLowerCase();
+	
+	              if (validatorType === "shortcut") {
+	                foundValidator = true;
+	              } else {
+	                $.each(settings.validatorTypes, function (validatorTemplateType, validatorTemplate) {
+	                  if (validators[validatorTemplateType] === undefined) {
+	                    validators[validatorTemplateType] = [];
+	                  }
+	                  if (!foundValidator && validatorType === validatorTemplateType.toLowerCase()) {
+	                    $this.data("validation" + el + formatValidatorName(validatorTemplate.name), validator[validatorTemplate.name.toLowerCase()]);
+	                    validators[validatorType].push($.extend(validator, validatorTemplate.init($this, el)));
+	                    foundValidator = true;
+	                  }
+	                });
+	              }
+	            }
+	
+	            if (!foundValidator) {
+	              $.error("Cannot find validation info for '" + el + "'");
+	            }
+	          });
+	
+	          // =============================================================
+	          //                                         STORE FALLBACK VALUES
+	          // =============================================================
+	
+	          $helpBlock.data("original-contents", $helpBlock.data("original-contents") ? $helpBlock.data("original-contents") : $helpBlock.html());
+	
+	          $helpBlock.data("original-role", $helpBlock.data("original-role") ? $helpBlock.data("original-role") : $helpBlock.attr("role"));
+	
+	          $controlGroup.data("original-classes", $controlGroup.data("original-clases") ? $controlGroup.data("original-classes") : $controlGroup.attr("class"));
+	
+	          $this.data("original-aria-invalid", $this.data("original-aria-invalid") ? $this.data("original-aria-invalid") : $this.attr("aria-invalid"));
+	
+	          // =============================================================
+	          //                                                    VALIDATION
+	          // =============================================================
+	
+	          $this.bind("validation.validation", function (event, params) {
+	
+	            var value = getValue($this);
+	
+	            // Get a list of the errors to apply
+	            var errorsFound = [];
+	
+	            $.each(validators, function (validatorType, validatorTypeArray) {
+	              if (value || value.length || params && params.includeEmpty || !!settings.validatorTypes[validatorType].blockSubmit && params && !!params.submitting) {
+	                $.each(validatorTypeArray, function (i, validator) {
+	                  if (settings.validatorTypes[validatorType].validate($this, value, validator)) {
+	                    errorsFound.push(validator.message);
+	                  }
+	                });
+	              }
+	            });
+	
+	            return errorsFound;
+	          });
+	
+	          $this.bind("getValidators.validation", function () {
+	            return validators;
+	          });
+	
+	          // =============================================================
+	          //                                             WATCH FOR CHANGES
+	          // =============================================================
+	          $this.bind("submit.validation", function () {
+	            return $this.triggerHandler("change.validation", { submitting: true });
+	          });
+	          $this.bind(["keyup", "focus", "blur", "click", "keydown", "keypress", "change"].join(".validation ") + ".validation", function (e, params) {
+	
+	            var value = getValue($this);
+	
+	            var errorsFound = [];
+	
+	            $controlGroup.find("input,textarea,select").each(function (i, el) {
+	              var oldCount = errorsFound.length;
+	              $.each($(el).triggerHandler("validation.validation", params), function (j, message) {
+	                errorsFound.push(message);
+	              });
+	              if (errorsFound.length > oldCount) {
+	                $(el).attr("aria-invalid", "true");
+	              } else {
+	                var original = $this.data("original-aria-invalid");
+	                $(el).attr("aria-invalid", original !== undefined ? original : false);
+	              }
+	            });
+	
+	            $form.find("input,select,textarea").not($this).not("[name=\"" + $this.attr("name") + "\"]").trigger("validationLostFocus.validation");
+	
+	            errorsFound = $.unique(errorsFound.sort());
+	
+	            // Were there any errors?
+	            if (errorsFound.length) {
+	              // Better flag it up as a warning.
+	              $controlGroup.removeClass("success error").addClass("warning");
+	
+	              // How many errors did we find?
+	              if (settings.options.semanticallyStrict && errorsFound.length === 1) {
+	                // Only one? Being strict? Just output it.
+	                $helpBlock.html(errorsFound[0] + (settings.options.prependExistingHelpBlock ? $helpBlock.data("original-contents") : ""));
+	              } else {
+	                // Multiple? Being sloppy? Glue them together into an UL.
+	                $helpBlock.html("<ul role=\"alert\"><li>" + errorsFound.join("</li><li>") + "</li></ul>" + (settings.options.prependExistingHelpBlock ? $helpBlock.data("original-contents") : ""));
+	              }
+	            } else {
+	              $controlGroup.removeClass("warning error success");
+	              if (value.length > 0) {
+	                $controlGroup.addClass("success");
+	              }
+	              $helpBlock.html($helpBlock.data("original-contents"));
+	            }
+	
+	            if (e.type === "blur") {
+	              $controlGroup.removeClass("success");
+	            }
+	          });
+	          $this.bind("validationLostFocus.validation", function () {
+	            $controlGroup.removeClass("success");
+	          });
+	        });
+	      },
+	      destroy: function destroy() {
+	
+	        return this.each(function () {
+	
+	          var $this = $(this),
+	              $controlGroup = $this.parents(".control-group").first(),
+	              $helpBlock = $controlGroup.find(".help-block").first();
+	
+	          // remove our events
+	          $this.unbind('.validation'); // events are namespaced.
+	          // reset help text
+	          $helpBlock.html($helpBlock.data("original-contents"));
+	          // reset classes
+	          $controlGroup.attr("class", $controlGroup.data("original-classes"));
+	          // reset aria
+	          $this.attr("aria-invalid", $this.data("original-aria-invalid"));
+	          // reset role
+	          $helpBlock.attr("role", $this.data("original-role"));
+	          // remove all elements we created
+	          if (createdElements.indexOf($helpBlock[0]) > -1) {
+	            $helpBlock.remove();
+	          }
+	        });
+	      },
+	      collectErrors: function collectErrors(includeEmpty) {
+	
+	        var errorMessages = {};
+	        this.each(function (i, el) {
+	          var $el = $(el);
+	          var name = $el.attr("name");
+	          var errors = $el.triggerHandler("validation.validation", { includeEmpty: true });
+	          errorMessages[name] = $.extend(true, errors, errorMessages[name]);
+	        });
+	
+	        $.each(errorMessages, function (i, el) {
+	          if (el.length === 0) {
+	            delete errorMessages[i];
+	          }
+	        });
+	
+	        return errorMessages;
+	      },
+	      hasErrors: function hasErrors() {
+	
+	        var errorMessages = [];
+	
+	        this.each(function (i, el) {
+	          errorMessages = errorMessages.concat($(el).triggerHandler("getValidators.validation") ? $(el).triggerHandler("validation.validation", { submitting: true }) : []);
+	        });
+	
+	        return errorMessages.length > 0;
+	      },
+	      override: function override(newDefaults) {
+	        defaults = $.extend(true, defaults, newDefaults);
+	      }
+	    },
+	    validatorTypes: {
+	      callback: {
+	        name: "callback",
+	        init: function init($this, name) {
+	          return {
+	            validatorName: name,
+	            callback: $this.data("validation" + name + "Callback"),
+	            lastValue: $this.val(),
+	            lastValid: true,
+	            lastFinished: true
+	          };
+	        },
+	        validate: function validate($this, value, validator) {
+	          if (validator.lastValue === value && validator.lastFinished) {
+	            return !validator.lastValid;
+	          }
+	
+	          if (validator.lastFinished === true) {
+	            validator.lastValue = value;
+	            validator.lastValid = true;
+	            validator.lastFinished = false;
+	
+	            var rrjqbvValidator = validator;
+	            var rrjqbvThis = $this;
+	            executeFunctionByName(validator.callback, window, $this, value, function (data) {
+	              if (rrjqbvValidator.lastValue === data.value) {
+	                rrjqbvValidator.lastValid = data.valid;
+	                if (data.message) {
+	                  rrjqbvValidator.message = data.message;
+	                }
+	                rrjqbvValidator.lastFinished = true;
+	                rrjqbvThis.data("validation" + rrjqbvValidator.validatorName + "Message", rrjqbvValidator.message);
+	                // Timeout is set to avoid problems with the events being considered 'already fired'
+	                setTimeout(function () {
+	                  rrjqbvThis.trigger("change.validation");
+	                }, 1); // doesn't need a long timeout, just long enough for the event bubble to burst
+	              }
+	            });
+	          }
+	
+	          return false;
+	        }
+	      },
+	      ajax: {
+	        name: "ajax",
+	        init: function init($this, name) {
+	          return {
+	            validatorName: name,
+	            url: $this.data("validation" + name + "Ajax"),
+	            lastValue: $this.val(),
+	            lastValid: true,
+	            lastFinished: true
+	          };
+	        },
+	        validate: function validate($this, value, validator) {
+	          if ("" + validator.lastValue === "" + value && validator.lastFinished === true) {
+	            return validator.lastValid === false;
+	          }
+	
+	          if (validator.lastFinished === true) {
+	            validator.lastValue = value;
+	            validator.lastValid = true;
+	            validator.lastFinished = false;
+	            $.ajax({
+	              url: validator.url,
+	              data: "value=" + value + "&field=" + $this.attr("name"),
+	              dataType: "json",
+	              success: function success(data) {
+	                if ("" + validator.lastValue === "" + data.value) {
+	                  validator.lastValid = !!data.valid;
+	                  if (data.message) {
+	                    validator.message = data.message;
+	                  }
+	                  validator.lastFinished = true;
+	                  $this.data("validation" + validator.validatorName + "Message", validator.message);
+	                  // Timeout is set to avoid problems with the events being considered 'already fired'
+	                  setTimeout(function () {
+	                    $this.trigger("change.validation");
+	                  }, 1); // doesn't need a long timeout, just long enough for the event bubble to burst
+	                }
+	              },
+	              failure: function failure() {
+	                validator.lastValid = true;
+	                validator.message = "ajax call failed";
+	                validator.lastFinished = true;
+	                $this.data("validation" + validator.validatorName + "Message", validator.message);
+	                // Timeout is set to avoid problems with the events being considered 'already fired'
+	                setTimeout(function () {
+	                  $this.trigger("change.validation");
+	                }, 1); // doesn't need a long timeout, just long enough for the event bubble to burst
+	              }
+	            });
+	          }
+	
+	          return false;
+	        }
+	      },
+	      regex: {
+	        name: "regex",
+	        init: function init($this, name) {
+	          return { regex: regexFromString($this.data("validation" + name + "Regex")) };
+	        },
+	        validate: function validate($this, value, validator) {
+	          return !validator.regex.test(value) && !validator.negative || validator.regex.test(value) && validator.negative;
+	        }
+	      },
+	      required: {
+	        name: "required",
+	        init: function init($this, name) {
+	          return {};
+	        },
+	        validate: function validate($this, value, validator) {
+	          return !!(value.length === 0 && !validator.negative) || !!(value.length > 0 && validator.negative);
+	        },
+	        blockSubmit: true
+	      },
+	      match: {
+	        name: "match",
+	        init: function init($this, name) {
+	          var element = $this.parents("form").first().find("[name=\"" + $this.data("validation" + name + "Match") + "\"]").first();
+	          element.bind("validation.validation", function () {
+	            $this.trigger("change.validation", { submitting: true });
+	          });
+	          return { "element": element };
+	        },
+	        validate: function validate($this, value, validator) {
+	          return value !== validator.element.val() && !validator.negative || value === validator.element.val() && validator.negative;
+	        },
+	        blockSubmit: true
+	      },
+	      max: {
+	        name: "max",
+	        init: function init($this, name) {
+	          return { max: $this.data("validation" + name + "Max") };
+	        },
+	        validate: function validate($this, value, validator) {
+	          return parseFloat(value, 10) > parseFloat(validator.max, 10) && !validator.negative || parseFloat(value, 10) <= parseFloat(validator.max, 10) && validator.negative;
+	        }
+	      },
+	      min: {
+	        name: "min",
+	        init: function init($this, name) {
+	          return { min: $this.data("validation" + name + "Min") };
+	        },
+	        validate: function validate($this, value, validator) {
+	          return parseFloat(value) < parseFloat(validator.min) && !validator.negative || parseFloat(value) >= parseFloat(validator.min) && validator.negative;
+	        }
+	      },
+	      maxlength: {
+	        name: "maxlength",
+	        init: function init($this, name) {
+	          return { maxlength: $this.data("validation" + name + "Maxlength") };
+	        },
+	        validate: function validate($this, value, validator) {
+	          return value.length > validator.maxlength && !validator.negative || value.length <= validator.maxlength && validator.negative;
+	        }
+	      },
+	      minlength: {
+	        name: "minlength",
+	        init: function init($this, name) {
+	          return { minlength: $this.data("validation" + name + "Minlength") };
+	        },
+	        validate: function validate($this, value, validator) {
+	          return value.length < validator.minlength && !validator.negative || value.length >= validator.minlength && validator.negative;
+	        }
+	      },
+	      maxchecked: {
+	        name: "maxchecked",
+	        init: function init($this, name) {
+	          var elements = $this.parents("form").first().find("[name=\"" + $this.attr("name") + "\"]");
+	          elements.bind("click.validation", function () {
+	            $this.trigger("change.validation", { includeEmpty: true });
+	          });
+	          return { maxchecked: $this.data("validation" + name + "Maxchecked"), elements: elements };
+	        },
+	        validate: function validate($this, value, validator) {
+	          return validator.elements.filter(":checked").length > validator.maxchecked && !validator.negative || validator.elements.filter(":checked").length <= validator.maxchecked && validator.negative;
+	        },
+	        blockSubmit: true
+	      },
+	      minchecked: {
+	        name: "minchecked",
+	        init: function init($this, name) {
+	          var elements = $this.parents("form").first().find("[name=\"" + $this.attr("name") + "\"]");
+	          elements.bind("click.validation", function () {
+	            $this.trigger("change.validation", { includeEmpty: true });
+	          });
+	          return { minchecked: $this.data("validation" + name + "Minchecked"), elements: elements };
+	        },
+	        validate: function validate($this, value, validator) {
+	          return validator.elements.filter(":checked").length < validator.minchecked && !validator.negative || validator.elements.filter(":checked").length >= validator.minchecked && validator.negative;
+	        },
+	        blockSubmit: true
+	      }
+	    },
+	    builtInValidators: {
+	      email: {
+	        name: "Email",
+	        type: "shortcut",
+	        shortcut: "validemail"
+	      },
+	      validemail: {
+	        name: "Validemail",
+	        type: "regex",
+	        regex: "[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\\.[A-Za-z]{2,4}",
+	        message: "Not a valid email address<!-- data-validator-validemail-message to override -->"
+	      },
+	      passwordagain: {
+	        name: "Passwordagain",
+	        type: "match",
+	        match: "password",
+	        message: "Does not match the given password<!-- data-validator-paswordagain-message to override -->"
+	      },
+	      positive: {
+	        name: "Positive",
+	        type: "shortcut",
+	        shortcut: "number,positivenumber"
+	      },
+	      negative: {
+	        name: "Negative",
+	        type: "shortcut",
+	        shortcut: "number,negativenumber"
+	      },
+	      number: {
+	        name: "Number",
+	        type: "regex",
+	        regex: "([+-]?\\\d+(\\\.\\\d*)?([eE][+-]?[0-9]+)?)?",
+	        message: "Must be a number<!-- data-validator-number-message to override -->"
+	      },
+	      integer: {
+	        name: "Integer",
+	        type: "regex",
+	        regex: "[+-]?\\\d+",
+	        message: "No decimal places allowed<!-- data-validator-integer-message to override -->"
+	      },
+	      positivenumber: {
+	        name: "Positivenumber",
+	        type: "min",
+	        min: 0,
+	        message: "Must be a positive number<!-- data-validator-positivenumber-message to override -->"
+	      },
+	      negativenumber: {
+	        name: "Negativenumber",
+	        type: "max",
+	        max: 0,
+	        message: "Must be a negative number<!-- data-validator-negativenumber-message to override -->"
+	      },
+	      required: {
+	        name: "Required",
+	        type: "required",
+	        message: "This is required<!-- data-validator-required-message to override -->"
+	      },
+	      checkone: {
+	        name: "Checkone",
+	        type: "minchecked",
+	        minchecked: 1,
+	        message: "Check at least one option<!-- data-validation-checkone-message to override -->"
+	      }
+	    }
+	  };
+	
+	  var formatValidatorName = function formatValidatorName(name) {
+	    return name.toLowerCase().replace(/(^|\s)([a-z])/g, function (m, p1, p2) {
+	      return p1 + p2.toUpperCase();
+	    });
+	  };
+	
+	  var getValue = function getValue($this) {
+	    // Extract the value we're talking about
+	    var value = $this.val();
+	    var type = $this.attr("type");
+	    if (type === "checkbox") {
+	      value = $this.is(":checked") ? value : "";
+	    }
+	    if (type === "radio") {
+	      value = $('input[name="' + $this.attr("name") + '"]:checked').length > 0 ? value : "";
+	    }
+	    return value;
+	  };
+	
+	  function regexFromString(inputstring) {
+	    return new RegExp("^" + inputstring + "$");
+	  }
+	
+	  /**
+	   * Thanks to Jason Bunting via StackOverflow.com
+	   *
+	   * http://stackoverflow.com/questions/359788/how-to-execute-a-javascript-function-when-i-have-its-name-as-a-string#answer-359910
+	   * Short link: http://tinyurl.com/executeFunctionByName
+	  **/
+	  function executeFunctionByName(functionName, context /*, args*/) {
+	    var args = Array.prototype.slice.call(arguments).splice(2);
+	    var namespaces = functionName.split(".");
+	    var func = namespaces.pop();
+	    for (var i = 0; i < namespaces.length; i++) {
+	      context = context[namespaces[i]];
+	    }
+	    return context[func].apply(this, args);
+	  }
+	
+	  $.fn.jqBootstrapValidation = function (method) {
+	
+	    if (defaults.methods[method]) {
+	      return defaults.methods[method].apply(this, Array.prototype.slice.call(arguments, 1));
+	    } else if ((typeof method === "undefined" ? "undefined" : _typeof(method)) === 'object' || !method) {
+	      return defaults.methods.init.apply(this, arguments);
+	    } else {
+	      $.error('Method ' + method + ' does not exist on jQuery.jqBootstrapValidation');
+	      return null;
+	    }
+	  };
+	
+	  $.jqBootstrapValidation = function (options) {
+	    $(":input").not("[type=image],[type=submit]").jqBootstrapValidation.apply(this, arguments);
+	  };
+	})(jQuery);
+
+/***/ },
+/* 3 */
+/***/ function(module, exports) {
+
 	'use strict';
 	
 	var create = function create(options) {
@@ -520,7 +1615,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 3 */
+/* 4 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -528,9 +1623,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * Created by liukai on 16/8/15.
 	 */
-	var xss = __webpack_require__(4);
-	var alert = __webpack_require__(14);
-	var loading = __webpack_require__(15);
+	var xss = __webpack_require__(5);
+	var alert = __webpack_require__(15);
+	var loading = __webpack_require__(16);
 	var getUrl = function getUrl(uri) {
 	  var doc = document;
 	  var elem = doc.createElement('a');
@@ -655,15 +1750,26 @@ return /******/ (function(modules) { // webpackBootstrap
 	  });
 	};
 	
+	var translate = function translate(resourceID) {
+	  var target = resourceID;
+	
+	  if (WUI.resources && WUI.config && WUI.config.locale && WUI.resources[WUI.config.locale]) {
+	    target = WUI.resources[WUI.config.locale][resourceID] || resourceID;
+	  }
+	
+	  return target;
+	};
+	
 	module.exports = {
 	  getUrl: getUrl,
 	  getParams: getParams,
 	  getFormat: format,
-	  ajax: ajax
+	  ajax: ajax,
+	  t: translate
 	};
 
 /***/ },
-/* 4 */
+/* 5 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -672,9 +1778,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @author 老雷<leizongmin@gmail.com>
 	 */
 	
-	var DEFAULT = __webpack_require__(5);
-	var parser = __webpack_require__(12);
-	var FilterXSS = __webpack_require__(13);
+	var DEFAULT = __webpack_require__(6);
+	var parser = __webpack_require__(13);
+	var FilterXSS = __webpack_require__(14);
 	
 	
 	/**
@@ -704,7 +1810,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 5 */
+/* 6 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -713,8 +1819,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @author 老雷<leizongmin@gmail.com>
 	 */
 	
-	var FilterCSS = __webpack_require__(6).FilterCSS;
-	var _ = __webpack_require__(11);
+	var FilterCSS = __webpack_require__(7).FilterCSS;
+	var _ = __webpack_require__(12);
 	
 	// 默认白名单
 	function getDefaultWhiteList () {
@@ -1120,7 +2226,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 6 */
+/* 7 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -1129,8 +2235,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @author 老雷<leizongmin@gmail.com>
 	 */
 	
-	var DEFAULT = __webpack_require__(7);
-	var FilterCSS = __webpack_require__(8);
+	var DEFAULT = __webpack_require__(8);
+	var FilterCSS = __webpack_require__(9);
 	
 	
 	/**
@@ -1158,7 +2264,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 7 */
+/* 8 */
 /***/ function(module, exports) {
 
 	/**
@@ -1547,7 +2653,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 8 */
+/* 9 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -1556,9 +2662,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @author 老雷<leizongmin@gmail.com>
 	 */
 	
-	var DEFAULT = __webpack_require__(7);
-	var parseStyle = __webpack_require__(9);
-	var _ = __webpack_require__(10);
+	var DEFAULT = __webpack_require__(8);
+	var parseStyle = __webpack_require__(10);
+	var _ = __webpack_require__(11);
 	
 	
 	/**
@@ -1643,7 +2749,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 9 */
+/* 10 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -1652,7 +2758,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @author 老雷<leizongmin@gmail.com>
 	 */
 	
-	var _ = __webpack_require__(10);
+	var _ = __webpack_require__(11);
 	
 	
 	/**
@@ -1723,7 +2829,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 10 */
+/* 11 */
 /***/ function(module, exports) {
 
 	module.exports = {
@@ -1764,7 +2870,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 11 */
+/* 12 */
 /***/ function(module, exports) {
 
 	module.exports = {
@@ -1799,7 +2905,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 12 */
+/* 13 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -1808,7 +2914,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @author 老雷<leizongmin@gmail.com>
 	 */
 	
-	var _ = __webpack_require__(11);
+	var _ = __webpack_require__(12);
 	
 	/**
 	 * 获取标签的名称
@@ -2042,7 +3148,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 13 */
+/* 14 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -2051,12 +3157,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @author 老雷<leizongmin@gmail.com>
 	 */
 	
-	var FilterCSS = __webpack_require__(6).FilterCSS;
-	var DEFAULT = __webpack_require__(5);
-	var parser = __webpack_require__(12);
+	var FilterCSS = __webpack_require__(7).FilterCSS;
+	var DEFAULT = __webpack_require__(6);
+	var parser = __webpack_require__(13);
 	var parseTag = parser.parseTag;
 	var parseAttr = parser.parseAttr;
-	var _ = __webpack_require__(11);
+	var _ = __webpack_require__(12);
 	
 	
 	/**
@@ -2241,7 +3347,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 14 */
+/* 15 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -2272,7 +3378,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 15 */
+/* 16 */
 /***/ function(module, exports) {
 
 	/**
@@ -2293,7 +3399,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 16 */
+/* 17 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -2302,7 +3408,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	'use strict';
 	
-	var tools = __webpack_require__(3);
+	var tools = __webpack_require__(4);
 	var create = function create(options) {
 	  var $el = options.$el;
 	  var meta = options.meta;
@@ -2399,7 +3505,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 17 */
+/* 18 */
 /***/ function(module, exports) {
 
 	/**
@@ -2470,7 +3576,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 18 */
+/* 19 */
 /***/ function(module, exports) {
 
 	/**
@@ -2566,7 +3672,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 19 */
+/* 20 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -2575,9 +3681,209 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	'use strict';
 	
-	var tools = __webpack_require__(3);
+	var tools = __webpack_require__(4);
 	var create = function create(options) {
 	  var $el = options.$el;
+	  var meta = options.meta;
+	  var onConfirm = options.onConfirm;
+	  var cancelFunc = options.onCancel;
+	  var fields = options.fields.map(function (field) {
+	    var target = $.extend({}, meta[field], {
+	      name: field,
+	      value: options.list[field] ? options.list[field] : ''
+	    });
+	    if (target.formatDate) {
+	      target.value = tools.getFormat(target.value, 'yyyy-MM-dd HH:mm:ss');
+	    }
+	    switch (target.type) {
+	      case 'text':
+	        target.text = true;
+	        break;
+	      case 'select':
+	        target.select = true;
+	        break;
+	      case 'number':
+	        target.number = true;
+	        break;
+	      case 'email':
+	        target.email = true;
+	        break;
+	      case 'date':
+	        target.value = target.format ? tools.getFormat(target.value, target.format) : tools.getFormat(target.value, 'yyyy-MM-dd HH:mm:ss');
+	        target.text = true;
+	      default:
+	        target.text = true;
+	        break;
+	    }
+	
+	    return target;
+	  });
+	
+	  if ($el) {
+	    var parentdiv = $el;
+	  } else {
+	    var parentdiv = $('<div></div>');
+	    parentdiv.attr('id', 'table-body');
+	    parentdiv.addClass('row');
+	    parentdiv.appendTo('.data-table');
+	  }
+	
+	  parentdiv.html(Handlebars.templates['data-dialog']({
+	    fields: fields,
+	    onConfirm: options.onConfirm ? true : false,
+	    cancelFunc: cancelFunc ? true : false,
+	    textInfo: options.textInfo ? options.textInfo : false,
+	    textInfoShow: options.textInfoShow ? options.textInfoShow : false,
+	    buttonHide: options.buttonHide ? true : false,
+	    confirmButton: options.confirmButton ? options.confirmButton : false,
+	    cancelButton: options.cancelButton ? options.cancelButton : false
+	  }));
+	
+	  //$('#modal').click(function() {
+	  //  var paramArray = parentdiv.find('form').serializeArray();
+	  //  var paramObj = {};
+	  //  paramArray.forEach(function(param) {
+	  //    paramObj[param.name] = param.value;
+	  //  });
+	  //  onConfirm(paramObj);
+	  //  event.preventDefault();
+	  //});
+	
+	  if (cancelFunc) {
+	    $('#cancelButton').click(function () {
+	      event.preventDefault();
+	      var paramArray = parentdiv.find('form').serializeArray();
+	      var paramObj = {};
+	      paramArray.forEach(function (param) {
+	        paramObj[param.name] = param.value;
+	      });
+	      cancelFunc(paramObj);
+	    });
+	  }
+	
+	  $(function () {
+	    $("input,select,textarea").not("[type=submit]").jqBootstrapValidation({
+	      submitSuccess: function submitSuccess($form, event) {
+	        event.preventDefault();
+	        var paramArray = parentdiv.find('form').serializeArray();
+	        var paramObj = {};
+	        paramArray.forEach(function (param) {
+	          paramObj[param.name] = param.value;
+	        });
+	
+	        options.fields.map(function (field) {
+	          var _func = meta[field].voild ? meta[field].voild : false;
+	          if (_func) {
+	            var message = _func(paramObj[field]);
+	            if (message) {
+	              var helpId = '#' + field + 'help';
+	              $(helpId).text(message);
+	              return false;
+	            }
+	          }
+	        });
+	        console.log('12321', paramObj);
+	        //onConfirm(paramObj);
+	      }
+	    });
+	  });
+	};
+	
+	module.exports = {
+	  create: create
+	};
+
+/***/ },
+/* 21 */
+/***/ function(module, exports) {
+
+	/**
+	 * Created by liukai on 16/8/24.
+	 */
+	
+	'use strict';
+	
+	var create = function create(options) {
+	  var $el = options.$el;
+	  var meta = options.meta;
+	
+	  $el.html(Handlebars.templates['content-header']({
+	    home: WUI.t('首页'),
+	    paths: meta
+	  }));
+	};
+	
+	module.exports = {
+	  create: create
+	};
+
+/***/ },
+/* 22 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * Created by liukai on 16/8/18.
+	 */
+	
+	'use strict';
+	
+	var tools = __webpack_require__(4);
+	var create = function create(options) {
+	  if ($('#html-dialog')) {
+	    $('#html-dialog').html('');
+	  };
+	  var message = options.message;
+	  var onConfirm = options.onConfirm;
+	  var cancelFunc = options.onCancel;
+	
+	  var parentdiv = $('<div></div>');
+	  parentdiv.attr('id', 'html-dialog');
+	  parentdiv.appendTo('body');
+	
+	  parentdiv.html(Handlebars.templates['modal-dialog']({
+	    message: message ? message : false,
+	    title: options.title ? options.title : false,
+	    onConfirm: onConfirm ? true : false,
+	    cancelFunc: cancelFunc ? true : false
+	  }));
+	  $('#myModal').modal('show');
+	  if (onConfirm) {
+	    $('#confirmButton').click(function () {
+	      onConfirm();
+	    });
+	  }
+	  if (cancelFunc) {
+	    $('#cancelButton').click(function () {
+	      cancelFunc();
+	    });
+	  }
+	  return {
+	    show: function show() {
+	      $('#myModal').modal('show');
+	    },
+	    hide: function hide() {
+	      $('#myModal').modal('hide');
+	    }
+	  };
+	};
+	
+	module.exports = {
+	  create: create
+	};
+
+/***/ },
+/* 23 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * Created by liukai on 16/8/18.
+	 */
+	
+	'use strict';
+	
+	var tools = __webpack_require__(4);
+	var modalDialog = __webpack_require__(22);
+	var create = function create(options) {
 	  var meta = options.meta;
 	  var onConfirm = options.onConfirm;
 	  var cancelFunc = options.onCancel;
@@ -2606,21 +3912,22 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	    return target;
 	  });
-	  if ($el) {
-	    var parentdiv = $el;
-	  } else {
-	    var parentdiv = $('<div></div>');
-	    parentdiv.attr('id', 'table-body');
-	    parentdiv.addClass('row');
-	    parentdiv.appendTo('.data-table');
-	  }
+	
+	  if ($('#html-dialog')) {
+	    $('#html-dialog').html('');
+	  };
+	  modalDialog.create({
+	    title: dialogPopTitle ? dialogPopTitle : false
+	  });
+	  $('.modal-footer').remove();
+	  var parentdiv = $('.modal-body');
+	
 	  parentdiv.html(Handlebars.templates['data-dialog']({
 	    fields: fields,
 	    onConfirm: options.onConfirm ? true : false,
 	    cancelFunc: cancelFunc ? true : false,
 	    textInfo: options.textInfo ? options.textInfo : false,
 	    textInfoShow: options.textInfoShow ? options.textInfoShow : false,
-	    buttonHide: options.buttonHide ? true : false,
 	    confirmButton: options.confirmButton ? options.confirmButton : false,
 	    cancelButton: options.cancelButton ? options.cancelButton : false
 	  }));
@@ -2634,39 +3941,28 @@ return /******/ (function(modules) { // webpackBootstrap
 	    onConfirm(paramObj);
 	    event.preventDefault();
 	  });
-	
-	  $('#cancelButton').click(function () {
-	    event.preventDefault();
-	    var paramArray = parentdiv.find('form').serializeArray();
-	    var paramObj = {};
-	    paramArray.forEach(function (param) {
-	      paramObj[param.name] = param.value;
+	  if (cancelFunc) {
+	    $('#cancelButton').click(function () {
+	      event.preventDefault();
+	      var paramArray = parentdiv.find('form').serializeArray();
+	      var paramObj = {};
+	      paramArray.forEach(function (param) {
+	        paramObj[param.name] = param.value;
+	      });
+	      cancelFunc(paramObj);
 	    });
-	    cancelFunc(paramObj);
-	  });
-	};
+	  }
+	  $('#myModal').modal('show');
 	
-	module.exports = {
-	  create: create
-	};
-
-/***/ },
-/* 20 */
-/***/ function(module, exports) {
-
-	/**
-	 * Created by liukai on 16/8/24.
-	 */
+	  return {
+	    show: function show() {
+	      $('#myModal').modal('show');
+	    },
+	    hide: function hide() {
+	      $('#myModal').modal('hide');
+	    }
 	
-	'use strict';
-	
-	var create = function create(options) {
-	  var $el = options.$el;
-	  var meta = options.meta;
-	
-	  $el.html(Handlebars.templates['content-header']({
-	    paths: meta
-	  }));
+	  };
 	};
 	
 	module.exports = {

@@ -18,6 +18,12 @@
               {{/if}}
             </div>
             <div class='modal-footer'>
+                  {{#if cancelButton}}
+                  <button id="cancelButton" class="btn btn-default cancel-button">取消</button>
+                  {{else}}
+                  <button id="cancelButton" data-dismiss="modal"  class="btn btn-default cancel-button">取消</button>
+                  {{/if}}
+                  <button id="confirmButton"  class="btn btn-primary save-button">确定</button>
             </div>
         </div>
     </div>

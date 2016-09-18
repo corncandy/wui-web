@@ -129,10 +129,20 @@ var ajax = function (options) {
     });
 };
 
+var translate = function(resourceID) {
+  var target = resourceID;
+
+  if (WUI.resources && WUI.config && WUI.config.locale && WUI.resources[WUI.config.locale]) {
+    target = WUI.resources[WUI.config.locale][resourceID] || resourceID;
+  }
+  
+  return target;
+};
 
 module.exports = {
   getUrl: getUrl,
   getParams: getParams,
   getFormat: format,
-  ajax: ajax
+  ajax: ajax,
+  t: translate
 };
